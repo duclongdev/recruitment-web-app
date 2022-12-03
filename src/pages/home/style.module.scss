@@ -1,0 +1,11 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+
+  justify-content: space-around;
+  margin: {
+    left: 200px;
+    right: 200px;
+  }
+}
