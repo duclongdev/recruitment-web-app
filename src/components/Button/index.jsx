@@ -3,7 +3,9 @@ import style from './style.module.scss'
 const Button = ({ title }) => {
   return (
     <div className={style.button}>
-      <a href="">{title}</a>
+      <a href="" style={{ fontWeight: '600' }}>
+        {title}
+      </a>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "../../components/Header";
-import style from "./style.module.scss";
+import React from 'react'
+import Header from '../../components/Header'
+import style from './style.module.scss'
 
 const DefaultLayout = ({ children }) => {
   return (
@@ -8,7 +8,7 @@ const DefaultLayout = ({ children }) => {
       <Header />
       <div>{children}</div>
     </div>
-  );
-};
+  )
+}
 
-export default DefaultLayout;
+export default DefaultLayout

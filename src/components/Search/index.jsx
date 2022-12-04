@@ -2,13 +2,12 @@ import React from 'react'
 import style from './style.module.scss'
 import { LocationIcon, SearchIcon } from '../../assets/icon'
 const Search = ({ type }) => {
-  console.log(type)
-  let title = 'What'
-  let placeholder = 'job title, keywords or company'
+  let title = 'Việc'
+  let placeholder = 'Tên việc làm, từ khóa hoặc công ty'
   let icon = 'search'
   if (type === 'location') {
-    title = 'Where'
-    placeholder = 'City or province'
+    title = 'Nơi'
+    placeholder = 'Công ty hoặc tỉnh thành'
     icon = 'location'
   }
   return (

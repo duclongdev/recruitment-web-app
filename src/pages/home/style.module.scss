@@ -1,11 +1,35 @@
+@import '../../sass/color';
+
 .search {
   display: flex;
   flex-direction: row;
   margin: auto;
 
+  width: 850px;
+
   justify-content: space-around;
-  margin: {
-    left: 200px;
-    right: 200px;
+  margin: auto;
+}
+
+.hr {
+  border: {
+    bottom: 0.5px $grey solid;
+  }
+}
+
+.optionShow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  -webkit-user-select: none;
+  user-select: none;
+
+  border: {
+    bottom: 0.5px $grey solid;
+    top: 0.5px $grey solid;
+  }
+  &__active {
+    border-bottom: 3px $main solid;
   }
 }
