@@ -39,15 +39,15 @@
     }
     cursor: pointer;
 
-    a:link {
-      text-decoration: none;
-    }
-    a {
-      color: black;
-    }
     &:hover {
       border-bottom: 2px $main solid;
     }
+  }
+  a:link {
+    text-decoration: none;
+  }
+  a {
+    color: black;
   }
 
   &__span {

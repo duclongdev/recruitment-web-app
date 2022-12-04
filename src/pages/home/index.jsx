@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import style from './style.module.scss'
 import { Search, Button, OtherOpt, OptionShow, Jobs, History } from '../../components'
 import clsx from 'clsx'

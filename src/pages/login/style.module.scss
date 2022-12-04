@@ -1,0 +1,80 @@
+@import '../../sass/color';
+.login {
+  display: flex;
+  padding: 0px 150px;
+  &__form {
+    flex: 3;
+  }
+  &__info {
+    flex: 6;
+    margin-left: 50px;
+    font-size: 18px;
+  }
+}
+
+.loginGoogle {
+  border: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 18px;
+  align-items: center;
+  background-color: $main;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+  span {
+    margin-left: 10px;
+  }
+  &:hover {
+    background-color: $main-hover;
+  }
+}
+
+.email {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  input {
+    width: 100%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 1px black solid;
+  }
+
+  &__header {
+    display: flex;
+    margin-bottom: 5px;
+    justify-content: space-between;
+    a {
+      color: rgb(66, 135, 245);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__signUp {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    a {
+      color: rgb(66, 135, 245);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}

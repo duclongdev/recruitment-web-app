@@ -1,3 +1,5 @@
-export { default as SearchIcon } from './Search'
-export { default as LocationIcon } from './Location'
-export { default as HeadIcon } from './Head'
+import CheckedIcon from './Checked'
+import SearchIcon from './Search'
+import LocationIcon from './Location'
+import HeadIcon from './Head'
+export { CheckedIcon, SearchIcon, LocationIcon, HeadIcon }
