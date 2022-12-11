@@ -2,41 +2,72 @@ import React from 'react'
 import logo from '../../assets/logo.png'
 import style from './style.module.scss'
 import clsx from 'clsx'
-import { UserAuth } from '../../utils/UserProvider'
+import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+const ItemHeader = ({ path, title }) => {
+  const navigator = useNavigate()
+  const location = useLocation()
+  const handleNavigate = (path) => {
+    navigator(path, { replace: true })
+  }
+  return (
+    <div
+      className={clsx(style.header__item, {
+        [style.active]: location.pathname === path ? true : false,
+      })}
+      onClick={() => handleNavigate(path)}
+    >
+      <span>{title}</span>
+    </div>
+  )
+}
 
 const Header = () => {
-  const { user } = UserAuth()
+  const user = useSelector((state) => state.user.value)
+  console.log('header + user: ' + JSON.stringify(user))
   return (
     <div className={style.header}>
       <div className={style.header__right}>
         <img src={logo} alt="logo.png" className={style.header__logo} />
-        <a href="/" className={clsx(style.header__item, style.active)}>
-          <span>Tìm việc</span>
-        </a>
-        <a className={style.header__item}>
-          <span href="">Đánh giá công ty</span>
-        </a>
+        {user?.role === 'EMPLOYEE' ? (
+          'EMPLOYEE'
+        ) : (
+          <>
+            <ItemHeader path="/" title="Tìm việc" />
+            <ItemHeader path="/review-company" title="Đánh giá công ty" />
+          </>
+        )}
       </div>
       <div className={style.header__right}>
-        <a className={style.header__item}>
-          <span href="">Tạo CV</span>
-        </a>
-        {user ? (
-          <a className={style.header__item} href="/user">
-            <span>{user.displayName}</span>
-          </a>
+        {user?.role === 'EMPLOYEE' ? (
+          <>
+            <ItemHeader path="/post-job" title="Đăng bài" />
+            <ItemHeader path="/employee" title={user.fullName} />
+          </>
+        ) : user?.role === 'USER' ? (
+          <>
+            <ItemHeader path="/user" title={<span>{user.name}</span>} />
+          </>
         ) : (
-          <a className={style.header__item} href="/login">
-            <span>Đăng nhập</span>
-          </a>
+          <>
+            <ItemHeader path="/login" title="Đăng nhập" />
+            <span className={style.header__span}></span>
+            <ItemHeader path="/login-employee" title="Nhà tuyển dụng / Đăng tin" />
+          </>
         )}
-        <span className={style.header__span}></span>
-        <div className={style.header__item}>
-          <a href="">Nhà tuyển dụng / Đăng tin</a>
-        </div>
       </div>
     </div>
   )
 }
 
 export default Header
+
+{
+  /* <ItemHeader path="/create-cv" title="Tạo CV" />
+            <ItemHeader path="/user" title={<span>{user.displayName}</span>} />
+            
+            <span className={style.header__span}></span>
+            <ItemHeader path="/login-employee" title="Nhà tuyển dụng / Đăng tin" /> */
+}

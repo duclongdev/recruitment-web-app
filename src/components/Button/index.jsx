@@ -1,12 +1,10 @@
 import React from 'react'
 import style from './style.module.scss'
-const Button = ({ title }) => {
+const Button = ({ title, type }) => {
   return (
-    <div className={style.button}>
-      <a href="" style={{ fontWeight: '600' }}>
-        {title}
-      </a>
-    </div>
+    <button className={style.button} type={type}>
+      <span style={{ fontWeight: '600' }}>{title}</span>
+    </button>
   )
 }
 

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { logout } from '../../redux/usrSlice'
 import { useDispatch } from 'react-redux'
 
-const User = () => {
+const ReviewCompany = () => {
   const { logOut, user } = UserAuth()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -25,4 +25,4 @@ const User = () => {
   )
 }
 
-export default User
+export default ReviewCompany

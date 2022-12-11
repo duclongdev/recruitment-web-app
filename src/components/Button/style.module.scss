@@ -2,10 +2,10 @@
 
 .button {
   background-color: $main;
-  display: flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
+  width: 100%;
+  border: none;
   cursor: pointer;
   padding: 12px 20px;
   border-radius: 5px;
@@ -13,7 +13,8 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  a {
+  outline: none;
+  span {
     text-decoration: none;
     color: white;
   }

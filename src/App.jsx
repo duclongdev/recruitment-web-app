@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { DefaultLayout } from './layouts'
 import { publicRoutes } from './routers'
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -13,13 +13,14 @@ function App() {
           else if (router.layout === null) Layout = Fragment
 
           const Page = router.component
+          const type = router.type ? router.type : 'user'
           return (
             <Route
               key={index}
               path={router.path}
               element={
                 <Layout>
-                  <Page />
+                  <Page type={type} />
                 </Layout>
               }
             />
