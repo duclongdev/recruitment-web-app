@@ -4,6 +4,21 @@
   padding: 0px 150px;
   &__form {
     flex: 3;
+    &__item {
+      user-select: none;
+      font-size: 16px;
+
+      input[type='text'],
+      input[type='email'],
+      input[type='password'] {
+        width: 100%;
+        padding: 12px 15px;
+        padding: 10px 12px;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+      }
+    }
   }
   &__info {
     flex: 6;
@@ -39,7 +54,7 @@
 
 .email {
   display: block;
-  box-sizing: border-box;
+
   margin-bottom: 20px;
   input {
     width: 100%;
@@ -63,6 +78,10 @@
     a:hover {
       text-decoration: underline;
     }
+    label:after {
+      content: ' *';
+      color: red;
+    }
   }
 
   &__signUp {
@@ -72,9 +91,36 @@
     a {
       color: rgb(66, 135, 245);
       text-decoration: none;
+      font-size: 16px;
     }
     a:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.note {
+  position: relative;
+  top: -10px;
+  font-size: 14px;
+}
+
+.label {
+  &:after {
+    content: ' *';
+    color: red;
+  }
+}
+
+.hi {
+  position: relative;
+}
+
+.fogotPW {
+  position: absolute;
+  top: 0;
+  right: 0;
+  a {
+    color: rgb(66, 135, 245);
   }
 }

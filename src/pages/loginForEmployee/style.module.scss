@@ -1,0 +1,66 @@
+.loginForEmploy {
+  display: flex;
+  padding: {
+    left: 100px;
+    right: 100px;
+  }
+}
+.info {
+  flex: 3;
+}
+
+.login {
+  flex: 2;
+  padding: 30px;
+  border: 1px black solid;
+  &__form {
+    width: 100%;
+    input[type='text'] {
+      width: 100%;
+      padding: 10px 25px;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border: 1px black solid;
+      margin-bottom: 20px;
+    }
+  }
+}
+.containerItem {
+  display: flex;
+}
+
+.left {
+  flex: 2;
+}
+.right {
+  flex: 1;
+  margin-left: 25px;
+}
+
+.containerRadioBtn {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  &__item {
+    width: fit-content;
+    display: flex;
+  }
+}
+
+.submitForm {
+  display: flex;
+  align-items: center;
+  span {
+    margin-left: 20px;
+  }
+  a {
+    color: green;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

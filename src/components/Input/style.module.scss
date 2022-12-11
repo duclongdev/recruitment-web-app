@@ -1,0 +1,42 @@
+@import '../../sass/color';
+
+.container {
+  user-select: none;
+  font-size: 16px;
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    width: 100%;
+    padding: 12px 15px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    outline: none;
+  }
+  padding-bottom: 16px;
+  font-size: 16px;
+  label {
+    padding-bottom: 12px;
+    display: inline-block;
+  }
+}
+
+.fieldInvalid {
+  border: 1px red solid;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(234 38 53 / 25%);
+  }
+  outline: none;
+}
+
+.fieldValid {
+  border: 1px $grey solid;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(66 135 245 / 25%);
+  }
+}
+
+.error {
+  font-size: 14px;
+  margin-top: 6px;
+}
