@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+}
+.other {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 700px;
+  }
+}
+
+.signIn {
+  flex: 1;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+}
+h1 {
+  font-size: 40px;
+}
+.form {
+  width: 500px;
+}

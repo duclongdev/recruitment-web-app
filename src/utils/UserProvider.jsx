@@ -17,13 +17,14 @@ const UserContext = createContext()
 
 export const UserProvider = ({ children }) => {
   const dispatch = useDispatch()
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState({})
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
   }
   const logOut = () => {
     signOut(auth)
+    setUser(null)
   }
 
   useEffect(() => {
@@ -43,11 +44,11 @@ export const UserProvider = ({ children }) => {
           .then((res) => {
             currentUser.role = res.data.role
             dispatch(login(res.data))
+            setUser(currentUser)
           })
           .catch((err) => {
             console.log('dang nhap that bai')
           })
-        setUser(currentUser)
       }
     })
     return () => {

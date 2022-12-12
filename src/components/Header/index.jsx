@@ -26,7 +26,6 @@ const ItemHeader = ({ path, title }) => {
 
 const Header = () => {
   const user = useSelector((state) => state.user.value)
-  console.log('header + user: ' + JSON.stringify(user))
   return (
     <div className={style.header}>
       <div className={style.header__right}>
@@ -63,11 +62,3 @@ const Header = () => {
 }
 
 export default Header
-
-{
-  /* <ItemHeader path="/create-cv" title="Tạo CV" />
-            <ItemHeader path="/user" title={<span>{user.displayName}</span>} />
-            
-            <span className={style.header__span}></span>
-            <ItemHeader path="/login-employee" title="Nhà tuyển dụng / Đăng tin" /> */
-}

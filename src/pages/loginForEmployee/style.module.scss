@@ -1,32 +1,32 @@
+@import '../../sass/color';
 .loginForEmploy {
   display: flex;
   padding: {
     left: 100px;
     right: 100px;
   }
+  position: static;
 }
 .info {
   flex: 3;
-}
-
-.login {
-  flex: 2;
-  padding: 30px;
-  border: 1px black solid;
-  &__form {
-    width: 100%;
-    input[type='text'] {
-      width: 100%;
-      padding: 10px 25px;
-      border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
-      border: 1px black solid;
-      margin-bottom: 20px;
+  position: sticky;
+  top: 10px;
+  h1 {
+    font-size: 34px;
+    span {
+      color: $main;
     }
   }
+  p {
+    padding-top: 15px;
+  }
+}
+
+.signIn {
+  flex: 2;
+  padding: 30px;
+  margin-top: 20px;
+  box-shadow: 2px 2px 25px rgb(0 0 0 / 35%);
 }
 .containerItem {
   display: flex;
@@ -62,5 +62,15 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.login {
+  margin-top: 100px;
+  align-items: center;
+  display: flex;
+  &__btn {
+    width: 200px;
+    margin-left: 20px;
   }
 }

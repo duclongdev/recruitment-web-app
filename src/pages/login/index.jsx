@@ -15,6 +15,7 @@ import * as yup from 'yup'
 import errorMessages from '../../utils/errorMessage.json'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/usrSlice'
+import { ApiError } from '../../error/apiError'
 
 const validationSchema = yup.object({
   email: yup
@@ -42,10 +43,7 @@ const Login = ({ type }) => {
   })
 
   const onSubmit = async (data) => {
-    console.log(type)
     const api = type === 'em' ? EmployeeAPI : userAPI
-    console.log(api)
-
     api
       .login(data)
       .then((res) => {
@@ -55,11 +53,11 @@ const Login = ({ type }) => {
       })
       .catch((error) => {
         console.log(error)
-        if (error.response.data === 'Email is not exists') {
+        if (error.response.data === ApiError.emailNotExists) {
           setError('email', {
             message: 'Email không tồn tại',
           })
-        } else if (error.response.data === 'Password incorrect') {
+        } else if (error.response.data === ApiError.passwordIncorrect) {
           setError('password', {
             message: 'Mật khẩu không chính xác',
           })
@@ -74,8 +72,8 @@ const Login = ({ type }) => {
       console.log(error)
     }
   }
-
   useEffect(() => {
+    console.log(user)
     if (user?.displayName != null) {
       navigate('/')
     }

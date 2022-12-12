@@ -11,6 +11,7 @@ import Input, { Error } from '../Input'
 import * as yup from 'yup'
 import errorMessages from '../../utils/errorMessage.json'
 import { RegExp } from '../../utils/regexExpression'
+import { ApiError } from '../../error/apiError'
 
 const InputRadio = ({ id, register, name, value }) => {
   return (
@@ -83,7 +84,7 @@ const SignIn = () => {
         navigate('/', { replace: true })
       })
       .catch((error) => {
-        if (error.response.data === 'Email is exits')
+        if (error.response.data === ApiError.emailExists)
           setError('email', {
             message: 'Email đã tồn tại',
           })
