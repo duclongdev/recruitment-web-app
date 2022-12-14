@@ -1,13 +1,13 @@
 {
   "required": {
-    "fullName": "*Vui lòng điền đầy đủ họ tên",
-    "position": "*Vui lòng điền chức vụ của bạn",
-    "email": "*Vui lòng cung cấp email công ty của bạn",
-    "phoneNumber": "*Vui lòng cung cấp số điện thoại",
-    "address": "* Vui lòng chọn một thành phố",
-    "companyName": "*Vui lòng điền tên công ty",
-    "companyWebsite": "*Vui lòng điền địa chỉ web của công ty bạn",
-    "password": "*Vui lòng nhập password",
+    "fullName": "Vui lòng điền đầy đủ họ tên",
+    "position": "Vui lòng điền chức vụ của bạn",
+    "email": "Vui lòng cung cấp email công ty của bạn",
+    "phoneNumber": "Vui lòng cung cấp số điện thoại",
+    "address": " Vui lòng chọn một thành phố",
+    "companyName": "Vui lòng điền tên công ty",
+    "companyWebsite": "Vui lòng điền địa chỉ web của công ty bạn",
+    "password": "Vui lòng nhập password",
     "confirmPassword": "Vui lòng không để trống phần này"
   },
   "password": "Tối thiểu 8 ký tự, ít nhất 1 chữ cái và 1 số",

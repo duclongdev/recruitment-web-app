@@ -80,7 +80,7 @@
     }
     label:after {
       content: ' *';
-      color: red;
+      color: $required;
     }
   }
 
@@ -108,7 +108,7 @@
 .label {
   &:after {
     content: ' *';
-    color: red;
+    color: $required;
   }
 }
 

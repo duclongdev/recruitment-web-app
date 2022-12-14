@@ -1,9 +1,17 @@
 import React from 'react'
 import style from './style.module.scss'
-const Button = ({ title, type, onClick }) => {
+import clsx from 'clsx'
+const Button = ({ title, type, onClick, className, disable, contrast }) => {
   return (
-    <button className={style.button} type={type} onClick={onClick}>
-      <span style={{ fontWeight: '600' }}>{title}</span>
+    <button
+      className={clsx(style.button, className, {
+        [style.disable]: disable,
+        [style.contrast]: contrast,
+      })}
+      type={type}
+      onClick={onClick}
+    >
+      <span style={{ fontWeight: '700', fontSize: '1rem' }}>{title}</span>
     </button>
   )
 }

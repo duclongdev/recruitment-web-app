@@ -125,7 +125,7 @@ const SignIn = () => {
             id="email"
             placeholder="duclong@space.com"
             register={register}
-            required
+            requed
             type={'email'}
             error={errors.email}
           />

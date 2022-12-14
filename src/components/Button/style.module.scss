@@ -8,17 +8,28 @@
   border: none;
   cursor: pointer;
   padding: 12px 20px;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  border-radius: 8px;
+  color: white;
   outline: none;
-  span {
-    text-decoration: none;
-    color: white;
-  }
   &:hover {
     background-color: $main-hover;
+  }
+}
+
+.disable {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contrast {
+  background-color: white;
+  border: 1px $grey solid;
+  color: $main;
+  span {
+    color: $main;
+  }
+  &:hover {
+    border-color: $main;
+    background-color: rgb(227, 226, 226);
   }
 }

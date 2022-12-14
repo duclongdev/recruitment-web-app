@@ -1,25 +1,21 @@
-.img {
-  width: 300px;
+.postJob {
 }
 
-.container {
-  width: 100%;
-  background-color: red;
-
-  animation-duration: 4s;
-  transition: width ease-in 1s;
-  -webkit-transition: width ease-in 1s;
-  -moz-transition: width ease-in 1s;
-  -ms-transition: width ease-in 1s;
-  -o-transition: width ease-in 1s;
+.stepper {
+  background-color: rgb(241 241 241);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
 }
-.container1 {
-  width: 100%;
-  background-color: yellow;
-  transition: width ease-in 1s;
-  -webkit-transition: width ease-in 1s;
-  -moz-transition: width ease-in 1s;
-  -ms-transition: width ease-in 1s;
-  -o-transition: width ease-in 1s;
-  animation-duration: 4s;
+
+.hi {
+  display: flex;
+  flex-direction: row;
+  margin: {
+    left: 100px;
+    right: 100px;
+  }
+  justify-content: space-between;
 }

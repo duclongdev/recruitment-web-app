@@ -72,7 +72,7 @@ const Stepper = ({ steps, currentStep }) => {
           [style.fullWidth]: index !== newStep.length - 1,
         })}
       >
-        <div className={style.container}>
+        {/* <div className={style.container}>
           <div className={clsx(style.selected, step.selected ? style.selected__true : '')}>
             {step.completed ? <span className={style.checked}>&#10003;</span> : index + 1}
           </div>
@@ -84,7 +84,7 @@ const Stepper = ({ steps, currentStep }) => {
           >
             {step.description}
           </div>
-        </div>
+        </div> */}
         <div
           className={clsx(
             style.line,

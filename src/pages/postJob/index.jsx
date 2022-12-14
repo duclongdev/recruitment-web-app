@@ -1,45 +1,60 @@
 import React, { useState } from 'react'
 import style from './style.module.scss'
 import { UseContextProvider } from '../../utils/MultiFormProvider'
-import { Final, Info, Job, Preview } from './steps'
+import { Final, Info, Job, Preview, JobDetail } from './steps'
 import Stepper from './stepper'
-import StepperControl from './StepperControl'
+import StepperControl from './stepperControl'
+import clsx from 'clsx'
+import Salary from './steps/salary'
 const PostJob = () => {
   const [currentStep, setCurrentStep] = useState(1)
 
-  const steps = ['Account Information', 'Personal Details', 'Payment', 'Complete']
-
-  const displayStep = (step) => {
-    switch (step) {
-      case 1:
-        return <Info />
-      case 2:
-        return <Job />
-      case 3:
-        return <Preview />
-      case 4:
-        return <Final />
-      default:
-    }
-  }
+  const steps = [
+    'Account Information',
+    'Personal Details',
+    'Payment',
+    'Complete',
+    'JobDetail',
+    'salary',
+  ]
 
   const handleClick = (direction) => {
     let newStep = currentStep
     direction === 'next' ? newStep++ : newStep--
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep)
   }
+  const displayStep = (step) => {
+    switch (step) {
+      case 1:
+        return <Info handleClick={handleClick} />
+      case 2:
+        return <Job handleClick={handleClick} />
+      case 3:
+        return <JobDetail handleClick={handleClick} />
+      case 4:
+        return <Salary handleClick={handleClick} />
+      case 5:
+        return <Preview handleClick={handleClick} />
+      case 6:
+        return <Final handleClick={handleClick} />
+      default:
+    }
+  }
 
   return (
     <div className={style.postJob}>
-      <div className={style.stepper} style={{ marginBottom: '200px' }}>
-        <Stepper steps={steps} currentStep={currentStep} />
-        <div>
-          <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
-        </div>
+      <Stepper steps={steps} currentStep={currentStep} />
+      <div className={clsx(currentStep !== 1 ? style.stepper : null)}>
+        <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
       </div>
-      {currentStep !== steps.length && (
-        <StepperControl handleClick={handleClick} currentStep={currentStep} steps={steps} />
-      )}
+      {/* {currentStep !== steps.length && (
+        <StepperControl
+          handleClick={handleClick}
+          currentStep={currentStep}
+          steps={steps}
+          className={style.hi}
+        />
+      )} */}
     </div>
   )
 }

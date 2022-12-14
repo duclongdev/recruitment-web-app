@@ -1,0 +1,156 @@
+@import '../../../../sass/color';
+.checkboxContainer {
+  input {
+    width: 200px;
+  }
+}
+
+.jobDetail {
+  fieldset {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+  }
+  legend {
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 0px;
+    margin-bottom: 0.25rem;
+    &::after {
+      content: ' *';
+      color: $required;
+    }
+  }
+}
+
+.container {
+  display: block;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  border: 1px $grey solid;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  span {
+    font-size: 1rem;
+  }
+  &:hover {
+    border-color: $main;
+  }
+  padding-left: 20px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.label {
+  padding-left: 20px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  height: 25px;
+  width: 25px;
+  border: 1px black solid;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: rgb(210, 235, 213);
+  border-color: $main;
+}
+
+.checkmark:after {
+  content: '';
+  position: relative;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: $main;
+  border: 0px;
+}
+
+.container .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.dropdownContainer {
+  position: relative;
+  select {
+    appearance: none;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 5px;
+    outline: none;
+
+    font-size: 1rem;
+    option {
+      padding: 25px;
+    }
+  }
+  label {
+    padding-bottom: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    display: inline-block;
+    &::after {
+      content: ' *';
+      color: $required;
+    }
+  }
+}
+
+.fieldInvalid {
+  border: 1px red solid;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(234 38 53 / 25%);
+  }
+  outline: none;
+}
+
+.fieldValid {
+  border: 1px $grey solid;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(66 135 245 / 25%);
+  }
+}
+
+.arrowIcon {
+  position: absolute;
+  top: 46px;
+  right: 12px;
+  width: 1.5rem;
+}

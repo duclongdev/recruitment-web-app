@@ -2,12 +2,10 @@
 
 .stepper {
   display: flex;
-  margin: {
-    left: 16px;
-    right: 16px;
-  }
+
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .stepsDisplay {
@@ -78,11 +76,12 @@
 
 .line {
   flex: 1 1 auto;
-  border: 2px red solid;
+  border: solid;
   border-width: 0;
-  border-top-width: 2px;
-  transition-duration: 1000ms;
-
+  border-top-width: 15px;
+  transition-duration: 700ms;
+  margin: 0px;
+  padding: 0px;
   &__completed {
     border-color: $main;
   }
