@@ -13,7 +13,7 @@ const Final = ({ handleClick }) => {
             <path className={style.checkmark__check} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
           </svg>
         </div>
-        <div className={style.title}>Chúc mứng!</div>
+        <div className={style.title}>Chúc mừng!</div>
         <div className={style.decription}>Bài tuyển dụng của bạn đã được đăng</div>
         <BtnControl handleClick={handleClick} isValid={true} />
       </div>

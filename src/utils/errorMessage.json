@@ -17,6 +17,7 @@
     "tooShort": "Quá ngắn",
     "tooLong": "Quá dài"
   },
+  "notBlank": "Không được để trống phần này",
 
   "confirmPassword": "Mật khẩu không trùng khớp"
 }

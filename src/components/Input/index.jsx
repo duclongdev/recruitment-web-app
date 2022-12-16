@@ -17,23 +17,43 @@ export const Error = ({ error }) => {
     </div>
   )
 }
-const Input = ({ label, id, register, required, type = 'text', error, placeholder, value }) => {
+const Input = ({
+  label,
+  id,
+  register,
+  required,
+  type = 'text',
+  error,
+  placeholder,
+  value,
+  children,
+  className,
+  onChange,
+}) => {
   return (
-    <div className={style.container}>
-      <label htmlFor={id} className={clsx({ [style.invalid]: error })}>
+    <div className={clsx(style.container, className)}>
+      <label
+        htmlFor={id}
+        className={clsx({ [style.invalid]: error, [style.labelRequired]: required })}
+      >
         {label}
       </label>
-      <input
-        {...register(id, { required })}
-        placeholder={placeholder}
-        type={type}
-        id={id}
-        className={clsx({
+      <div
+        className={clsx(style.inputContainer, {
           [style.fieldInvalid]: error,
           [style.fieldValid]: !error,
         })}
-        value={value}
-      />
+      >
+        <input
+          {...register(id)}
+          placeholder={placeholder}
+          type={type}
+          id={id}
+          value={value}
+          onChange={onChange}
+        />
+        <div className={style.children}>{children}</div>
+      </div>
       <Error error={error} />
     </div>
   )

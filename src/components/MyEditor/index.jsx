@@ -4,7 +4,7 @@ import Toolbar from './Toolbar'
 import './styles.css'
 import { Controller } from 'react-hook-form'
 
-const MyEditor = ({ control, name }) => {
+const MyEditor = ({ control, name, className }) => {
   const editor = useRef(null)
   function focusEditor() {
     editor.current.focus()
@@ -19,7 +19,7 @@ const MyEditor = ({ control, name }) => {
         name={name}
         control={control}
         render={({ field: { onChange, value } }) => (
-          <div>
+          <div className={className}>
             <Toolbar editorState={value} setEditorState={onChange} />
             <div className="RichEditor-root">
               <div className="RichEditor-editor" onClick={focusEditor}>

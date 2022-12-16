@@ -10,22 +10,30 @@
     width: 100%;
     padding: 12px 14px;
     border-radius: 5px;
+    border: none;
     outline: none;
     font-size: 1rem;
   }
   padding-bottom: 16px;
   font-size: 16px;
   label {
-    padding-bottom: 12px;
     display: inline-block;
-    font-weight: 600;
-    font-size: 1rem;
+    padding-bottom: 5px;
+  }
+}
+.labelRequired {
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 12px;
+  &::after {
+    content: ' *';
+    color: $required;
   }
 }
 
 .fieldInvalid {
   border: 1px red solid;
-  &:focus {
+  &:focus-within {
     box-shadow: 0 0 0 0.25rem rgb(234 38 53 / 25%);
   }
   outline: none;
@@ -33,7 +41,7 @@
 
 .fieldValid {
   border: 1px $grey solid;
-  &:focus {
+  &:focus-within {
     box-shadow: 0 0 0 0.25rem rgb(66 135 245 / 25%);
   }
 }
@@ -55,4 +63,16 @@
 
 .dataListContainer {
   background-color: white;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+}
+
+.children {
+  padding-right: 10px;
 }

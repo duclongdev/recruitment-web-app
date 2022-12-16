@@ -4,60 +4,50 @@ import { BtnControl, HeaderPostJob, InputContainer } from '../job'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import Input, { Error } from '../../../../components/Input'
+import { Error } from '../../../../components/Input'
 import clsx from 'clsx'
 import { DownArrowIcon } from '../../../../assets/icon'
+import { jobDetail } from '../../../../utils/dataForOptions'
 
-const amountOfJob = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10',
-  '10+',
-  'Tôi liên tục tuyển dụng vị trí này',
-]
-
-const amountOfWeek = ['1 dến 3 ngày', '3 đến 7 ngày', '1 đến 2 tuần', '2 đến 4 tuần', 'Trên 4 tuần']
-
-const Checkbox = ({ label, register, value }) => {
+export const Checkbox = ({ label, register, value, onChange, data = 'jobType' }) => {
   return (
     <label className={style.container}>
       <span className={style.label}>{label}</span>
-      <input type="checkbox" {...register('jobType')} value={value} />
+      <input type="checkbox" {...register(data)} value={value} onChange={onChange} />
       <span className={style.checkmark}></span>
     </label>
   )
 }
 
-const DropdownInput = ({ register, error, label, id, listData }) => {
+export const DropdownInput = ({ register, error, label, id, listData, onChange, required }) => {
   return (
     <div className={style.dropdownContainer}>
-      <label htmlFor="amountOfJob">{label}</label>
-      <select
-        id={id}
-        {...register(id)}
+      <label
+        htmlFor="amountOfJob"
         className={clsx({
+          [style.required]: required,
+        })}
+      >
+        {label}
+      </label>
+      <div
+        className={clsx(style.selectContainer, {
           [style.fieldInvalid]: error,
           [style.fieldValid]: !error,
         })}
       >
-        <option value="">Chọn số lượng</option>
-        {listData.map((item, index) => {
-          return (
-            <option value={item} key={index}>
-              {item}
-            </option>
-          )
-        })}
-      </select>
+        <select id={id} {...register(id)} onChange={onChange}>
+          {listData.map((item, index) => {
+            return (
+              <option value={item.value} key={index}>
+                {item.label}
+              </option>
+            )
+          })}
+        </select>
 
-      <DownArrowIcon className={style.arrowIcon} />
+        <DownArrowIcon className={style.arrowIcon} />
+      </div>
 
       <Error error={error} />
     </div>
@@ -84,17 +74,18 @@ const JobDetail = ({ handleClick }) => {
     formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(validationSchema),
+    defaultValues: {
+      jobType: ['intern'],
+      amountOfJob: '1',
+      amountOfWeek: '1 đến 3 ngày',
+    },
   })
 
   const onSubmit = (data) => {
     console.log(data)
-    console.log(errors.jobType)
+    handleClick('next')
   }
 
-  const doSomething = async (value) => {
-    // do something with my select value onChange
-    console.log('trigger: ' + value)
-  }
   return (
     <div className={style.jobDetail}>
       <HeaderPostJob title="Chi tiết về công việc" path="assets/imgDetailJob.svg" />
@@ -112,22 +103,24 @@ const JobDetail = ({ handleClick }) => {
         </InputContainer>
         <InputContainer>
           <DropdownInput
+            required
             register={register}
             id={'amountOfJob'}
             error={errors.amountOfJob}
             label={'Bạn muốn thuê bao nhiêu người cho công việc này'}
-            listData={amountOfJob}
+            listData={jobDetail.amountOfJob}
           />
           <br />
           <DropdownInput
+            required
             register={register}
             id={'amountOfWeek'}
             error={errors.amountOfWeek}
             label={'Bạn cần thuê nhanh trong bao lâu'}
-            listData={amountOfWeek}
+            listData={jobDetail.amountOfWeek}
           />
         </InputContainer>
-        <BtnControl handleClick={handleClick} isValid={isValid} />
+        <BtnControl handleClick={handleClick} />
       </form>
     </div>
   )

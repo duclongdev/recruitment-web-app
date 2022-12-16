@@ -8,7 +8,7 @@ const Error = () => {
       role="img"
       fill="currentColor"
       viewBox="0 0 18 18"
-      ariaHidden="true"
+      aria-hidden="true"
       style={{ width: '14px' }}
     >
       <title>error</title>

@@ -37,13 +37,14 @@ const Info = ({ handleClick }) => {
 
   const onSubmit = (data) => {
     console.log(data)
+    handleClick('next')
   }
   return (
     <div className={style.info}>
       <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
         <h1>Xác nhận thông tin tài khoản</h1>
         <Input
-          label={<span className={style.required}>Tên công ty</span>}
+          label={'Tên công ty'}
           id={'companyName'}
           register={register}
           required
@@ -52,7 +53,7 @@ const Info = ({ handleClick }) => {
           error={errors.companyName}
         />
         <Input
-          label={<span className={style.required}>Họ và tên</span>}
+          label={'Họ và tên'}
           id={'fullName'}
           register={register}
           required
@@ -61,7 +62,7 @@ const Info = ({ handleClick }) => {
           error={errors.fullName}
         />
         <Input
-          label={<span className={style.required}>Số điện thoại</span>}
+          label={'Số điện thoại'}
           id={'phoneNumber'}
           register={register}
           required
@@ -70,7 +71,7 @@ const Info = ({ handleClick }) => {
           error={errors.phoneNumber}
         />
         <Input
-          label={<span className={style.required}>Email công ty</span>}
+          label={'Email công ty'}
           id={'email'}
           register={register}
           required
@@ -82,7 +83,6 @@ const Info = ({ handleClick }) => {
           <Button
             title="Lưu và tiếp tục"
             type="submit"
-            onClick={isValid ? () => handleClick('next') : null}
             className={style.btn}
             disable={isValid ? false : true}
           />

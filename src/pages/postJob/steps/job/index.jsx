@@ -5,13 +5,13 @@ import style from './style.module.scss'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import errorMessages from '../../../../utils/errorMessage.json'
+
 const validationSchema = yup.object({
   jobName: yup.string().required('Vui lòng điền tên công việc'),
   location: yup.string().required('Vui lòng nhập nơi bạn cần quảng cáo'),
 })
 
-export const BtnControl = ({ handleClick, isValid }) => {
+export const BtnControl = ({ handleClick }) => {
   return (
     <div className={style.btnControl}>
       <Button
@@ -24,12 +24,7 @@ export const BtnControl = ({ handleClick, isValid }) => {
         className={style.back}
         onClick={() => handleClick()}
       />
-      <Button
-        title="Lưu và tiếp tục"
-        className={style.next}
-        type="submit"
-        onClick={isValid ? () => handleClick('next') : null}
-      />
+      <Button title="Lưu và tiếp tục" className={style.next} type="submit" />
     </div>
   )
 }
@@ -61,6 +56,7 @@ const Job = ({ handleClick }) => {
 
   const onSubmit = (data) => {
     console.log(data)
+    handleClick('next')
   }
   return (
     <div>

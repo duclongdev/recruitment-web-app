@@ -14,19 +14,15 @@ const Stepper = ({ steps, currentStep }) => {
       if (count === stepNumber) {
         newSteps[count] = {
           ...newSteps[count],
-          highlighted: true,
-          selected: true,
+
           completed: false,
         }
         count++
       }
-
       //step completed
       else if (count < stepNumber) {
         newSteps[count] = {
           ...newSteps[count],
-          highlighted: false,
-          selected: true,
           completed: true,
         }
         count++
@@ -35,8 +31,7 @@ const Stepper = ({ steps, currentStep }) => {
       else {
         newSteps[count] = {
           ...newSteps[count],
-          highlighted: false,
-          selected: false,
+
           completed: false,
         }
         count++
@@ -53,12 +48,9 @@ const Stepper = ({ steps, currentStep }) => {
         {
           description: step,
           completed: false,
-          highlighted: index === 0 ? true : false,
-          selected: index === 0 ? true : false,
         }
       )
     )
-
     stepsRef.current = stepsState
     const current = updateStep(currentStep - 1, stepsRef.current)
     setNewStep(current)
@@ -72,19 +64,6 @@ const Stepper = ({ steps, currentStep }) => {
           [style.fullWidth]: index !== newStep.length - 1,
         })}
       >
-        {/* <div className={style.container}>
-          <div className={clsx(style.selected, step.selected ? style.selected__true : '')}>
-            {step.completed ? <span className={style.checked}>&#10003;</span> : index + 1}
-          </div>
-          <div
-            className={clsx(
-              style.description,
-              step.highlighted ? style.description__highlighted : style.description__nonHighlighted
-            )}
-          >
-            {step.description}
-          </div>
-        </div> */}
         <div
           className={clsx(
             style.line,

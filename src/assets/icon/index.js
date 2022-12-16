@@ -4,4 +4,17 @@ import LocationIcon from './Location'
 import HeadIcon from './Head'
 import ErrorIcon from './Error'
 import DownArrowIcon from './DownArrow'
-export { CheckedIcon, SearchIcon, LocationIcon, HeadIcon, ErrorIcon, DownArrowIcon }
+import BoldIcon from './Bold'
+import ItalicIcon from './Italic'
+import UnOrderListIcon from './UnOrderList'
+export {
+  CheckedIcon,
+  SearchIcon,
+  LocationIcon,
+  HeadIcon,
+  ErrorIcon,
+  DownArrowIcon,
+  BoldIcon,
+  ItalicIcon,
+  UnOrderListIcon,
+}

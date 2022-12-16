@@ -112,30 +112,33 @@
   select {
     appearance: none;
     width: 100%;
+    border: 0px;
     padding: 12px 14px;
-    border-radius: 5px;
     outline: none;
-
+    border-radius: 5px;
     font-size: 1rem;
     option {
       padding: 25px;
     }
   }
   label {
-    padding-bottom: 12px;
-    font-weight: 800;
-    font-size: 1rem;
     display: inline-block;
-    &::after {
-      content: ' *';
-      color: $required;
-    }
+    padding-bottom: 5px;
+  }
+}
+.required {
+  padding-bottom: 12px;
+  font-weight: 800;
+  font-size: 1rem;
+  &::after {
+    content: ' *';
+    color: $required;
   }
 }
 
 .fieldInvalid {
   border: 1px red solid;
-  &:focus {
+  &:focus-within {
     box-shadow: 0 0 0 0.25rem rgb(234 38 53 / 25%);
   }
   outline: none;
@@ -143,14 +146,21 @@
 
 .fieldValid {
   border: 1px $grey solid;
-  &:focus {
+  &:focus-within {
     box-shadow: 0 0 0 0.25rem rgb(66 135 245 / 25%);
   }
 }
 
 .arrowIcon {
-  position: absolute;
-  top: 46px;
-  right: 12px;
   width: 1.5rem;
+  margin-right: 10px;
+}
+
+.selectContainer {
+  display: flex;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }

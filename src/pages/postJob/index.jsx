@@ -6,16 +6,17 @@ import Stepper from './stepper'
 import StepperControl from './stepperControl'
 import clsx from 'clsx'
 import Salary from './steps/salary'
+import Description from './steps/description'
 const PostJob = () => {
   const [currentStep, setCurrentStep] = useState(1)
 
   const steps = [
     'Account Information',
-    'Personal Details',
-    'Payment',
-    'Complete',
-    'JobDetail',
-    'salary',
+    'Job Overview',
+    'Job Detail',
+    'Salary',
+    'Description',
+    'Final',
   ]
 
   const handleClick = (direction) => {
@@ -34,7 +35,7 @@ const PostJob = () => {
       case 4:
         return <Salary handleClick={handleClick} />
       case 5:
-        return <Preview handleClick={handleClick} />
+        return <Description handleClick={handleClick} />
       case 6:
         return <Final handleClick={handleClick} />
       default:
