@@ -1,0 +1,14 @@
+.stepperControl {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.notAllow {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn {
+  width: fit-content;
+}

@@ -1,0 +1,32 @@
+@import '../../../../sass/color';
+.description {
+  label {
+    font-size: 1rem;
+    font-weight: 800;
+    &::after {
+      content: ' *';
+      color: $required;
+    }
+  }
+  .suggestion {
+    font-size: 0.875rem;
+    color: rgb(89, 89, 89);
+    margin-bottom: 20px;
+  }
+}
+.label {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.warning {
+  border: 1px $required solid;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.labelWarning {
+  color: $required;
+}

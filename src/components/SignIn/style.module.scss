@@ -1,0 +1,132 @@
+@import '../../sass/color';
+
+.formSignin {
+  user-select: none;
+  font-size: 16px;
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    width: 100%;
+    padding: 12px 15px;
+    padding: 10px 12px;
+    border-radius: 5px;
+
+    outline: none;
+  }
+}
+
+.inputContainer {
+  padding-bottom: 16px;
+  font-size: 16px;
+  label {
+    padding-bottom: 12px;
+    display: inline-block;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.fieldInvalid {
+  border: 1px red solid;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(234 38 53 / 25%);
+  }
+  outline: none;
+}
+
+.fieldValid {
+  border: 1px $grey solid;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgb(66 135 245 / 25%);
+  }
+}
+
+.inputRow {
+  display: flex;
+  &__itemLeft {
+    flex: 3;
+    margin-right: 30px;
+  }
+  &__itemRight {
+    flex: 2;
+  }
+}
+
+.radioBtn {
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+  &:after {
+    content: '';
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    display: none;
+  }
+}
+
+.radioBtn {
+  &:hover {
+    input ~ .checkmark {
+      background-color: #ccc;
+    }
+  }
+  input:checked ~ .checkmark {
+    background-color: $main;
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+}
+
+.radioGroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.radioContainer {
+  margin-bottom: 16px;
+}
+
+.passwordContainer {
+  display: flex;
+  &__itemLeft {
+    flex: 1;
+    margin-right: 10px;
+  }
+  &__itemRight {
+    flex: 1;
+    margin-left: 10px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $main;
+  &:hover {
+    text-decoration: underline;
+  }
+}

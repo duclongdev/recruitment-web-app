@@ -1,0 +1,70 @@
+@import '../../sass/color';
+@import '../../sass/border';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.listJob {
+  padding: 20px;
+}
+.job {
+  width: 470px;
+  height: 400px;
+  margin: {
+    top: 20px;
+    bottom: 20px;
+  }
+  padding: 20px;
+  -webkit-user-select: none;
+  user-select: none;
+
+  @include border-component;
+
+  &:active {
+    border: 1px $main solid;
+  }
+  &__description {
+    padding: 10px;
+    list-style: circle;
+  }
+}
+.jobDetail {
+  margin-top: 20px;
+  width: 540px;
+  height: 97vh;
+
+  position: sticky;
+  top: 10px;
+}
+h3 {
+  font-weight: 600;
+}
+.moreBtn {
+  background-color: $main;
+  padding: 15px;
+  width: 100%;
+  @include border-component;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  &:active {
+    background-color: $main-hover;
+  }
+}
+
+.jobDetail {
+  @include border-component;
+  &__header {
+    padding: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+
+    &__buttonContainer {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../sass/color';
+
+.container {
+  padding: 10px;
+  width: fit-content;
+  padding: 20px 50px;
+  font-size: 20px;
+  position: relative;
+  border: {
+    bottom: 3px white solid;
+  }
+
+  cursor: pointer;
+}
+.new {
+  position: relative;
+  background-color: black;
+  color: white;
+  padding: 10px 5px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.active {
+  border-bottom: 3px $main solid;
+}

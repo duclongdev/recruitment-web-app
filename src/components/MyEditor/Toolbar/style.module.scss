@@ -1,0 +1,22 @@
+.toolBar {
+  border: 1px solid #ddd;
+  border-start-start-radius: 5px;
+  border-start-end-radius: 5px;
+  background-color: rgb(243, 242, 241);
+}
+.btn {
+  border: 0px;
+  padding: 10px;
+  margin: 0px;
+  width: 45px;
+  height: 45px;
+  &:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  &__isActive {
+    background: rgb(118, 118, 118);
+    color: white;
+  }
+}

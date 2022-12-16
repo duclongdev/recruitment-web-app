@@ -1,0 +1,35 @@
+@import '../../sass/color';
+
+.button {
+  background-color: $main;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  outline: none;
+  &:hover {
+    background-color: $main-hover;
+  }
+}
+
+.disable {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contrast {
+  background-color: white;
+  border: 1px $grey solid;
+  color: $main;
+  span {
+    color: $main;
+  }
+  &:hover {
+    border-color: $main;
+    background-color: rgb(227, 226, 226);
+  }
+}

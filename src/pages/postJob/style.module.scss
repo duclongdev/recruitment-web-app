@@ -1,0 +1,21 @@
+.postJob {
+}
+
+.stepper {
+  background-color: rgb(241 241 241);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.hi {
+  display: flex;
+  flex-direction: row;
+  margin: {
+    left: 100px;
+    right: 100px;
+  }
+  justify-content: space-between;
+}
