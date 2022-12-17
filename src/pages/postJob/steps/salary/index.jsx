@@ -43,7 +43,7 @@ const Salary = ({ handleClick }) => {
         if (
           data.startAmount !== '' &&
           data.endAmount !== '' &&
-          parseInt(data.startAmount) > parseInt(data.endAmount)
+          parseInt(data.startAmount) >= parseInt(data.endAmount)
         ) {
           setError(amount.endAmount, { message: 'Không được ít hơn số tiền ban đầu' })
           flag = false

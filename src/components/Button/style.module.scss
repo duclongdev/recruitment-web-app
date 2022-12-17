@@ -10,6 +10,7 @@
   border-radius: 8px;
   color: white;
   outline: none;
+
   &:hover {
     background-color: $main-hover;
   }
@@ -31,4 +32,8 @@
     border-color: $main;
     background-color: rgb(227, 226, 226);
   }
+}
+
+.fullWidth {
+  width: 100%;
 }
