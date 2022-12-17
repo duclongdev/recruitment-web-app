@@ -5,13 +5,18 @@ import style from './style.module.scss'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-
+import { openModal } from '../../../../redux/modalSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectModal } from '../../../../redux/modalSlice'
 const validationSchema = yup.object({
   jobName: yup.string().required('Vui lòng điền tên công việc'),
   location: yup.string().required('Vui lòng nhập nơi bạn cần quảng cáo'),
 })
 
-export const BtnControl = ({ handleClick }) => {
+export const BtnControl = ({ handleClick, handlePreview, showPreview }) => {
+  const dispatch = useDispatch()
+  const modal = useSelector(selectModal)
+  console.log('modal: ' + modal)
   return (
     <div className={style.btnControl}>
       <Button
@@ -24,7 +29,18 @@ export const BtnControl = ({ handleClick }) => {
         className={style.back}
         onClick={() => handleClick()}
       />
-      <Button title="Lưu và tiếp tục" className={style.next} type="submit" />
+      <div className={style.right}>
+        {showPreview && (
+          <Button
+            title="Xem trước"
+            className={style.preview}
+            onClick={() => dispatch(openModal())}
+            type="button"
+          />
+        )}
+
+        <Button title="Lưu và tiếp tục" className={style.next} type="submit" />
+      </div>
     </div>
   )
 }

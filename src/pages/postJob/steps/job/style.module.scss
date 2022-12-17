@@ -1,3 +1,5 @@
+@import '../../../../sass/color';
+
 .job {
   background-color: rgb(241 241 241);
   display: flex;
@@ -49,4 +51,16 @@
 .back,
 .next {
   width: fit-content;
+}
+.right {
+  display: flex;
+}
+
+.preview {
+  background-color: white;
+  color: $main;
+  margin-right: 20px;
+  &:hover {
+    background-color: rgb(218, 247, 226);
+  }
 }

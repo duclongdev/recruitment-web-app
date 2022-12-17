@@ -37,6 +37,10 @@ const Description = ({ handleClick }) => {
     handleClick('next')
   }
 
+  const handlePreview = () => {
+    console.log('hih')
+  }
+
   return (
     <div className={style.description}>
       <HeaderPostJob title="Mô tả công việc" path="assets/teacher.svg" />
@@ -62,7 +66,7 @@ const Description = ({ handleClick }) => {
           />
           {errors.jobDescription && <Error error={errors.jobDescription} />}
         </InputContainer>
-        <BtnControl handleClick={handleClick} />
+        <BtnControl handleClick={handleClick} handlePreview={handlePreview} showPreview />
       </form>
     </div>
   )
