@@ -54,7 +54,12 @@ const Description = ({ handleClick }) => {
       setPrepare(false)
     } else {
       setPostData({ ...postData, jobDescription })
-      handleClick('next')
+      if (
+        window.confirm(
+          'Sau bước này bài viết của bạn sẽ được đăng... Vui lòng xem kỹ trước khi đăng'
+        ) === true
+      )
+        handleClick('next')
     }
   }
 
@@ -87,7 +92,7 @@ const Description = ({ handleClick }) => {
           />
           {errors.jobDescription && <Error error={errors.jobDescription} />}
         </InputContainer>
-        <BtnControl handleClick={handleClick} handlePreview={handlePreview} showPreview />
+        <BtnControl handleClick={handleClick} handlePreview={handlePreview} showPreview final />
       </form>
     </div>
   )

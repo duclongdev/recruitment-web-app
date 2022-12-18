@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '../../../../components/Button'
 import Input from '../../../../components/Input'
 import style from './style.module.scss'
+import clsx from 'clsx'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -12,7 +13,7 @@ const validationSchema = yup.object({
   location: yup.string().required('Vui lòng nhập nơi bạn cần quảng cáo'),
 })
 
-export const BtnControl = ({ handleClick, handlePreview, showPreview }) => {
+export const BtnControl = ({ handleClick, handlePreview, showPreview, final }) => {
   return (
     <div className={style.btnControl}>
       <Button
@@ -35,7 +36,7 @@ export const BtnControl = ({ handleClick, handlePreview, showPreview }) => {
           />
         )}
 
-        <Button title="Lưu và tiếp tục" className={style.next} type="submit" />
+        <Button title={final ? "Hoàn thành" : "Lưu và tiếp tục"} className={style.next} type="submit" />
       </div>
     </div>
   )
@@ -48,8 +49,8 @@ export const HeaderPostJob = ({ title, path }) => {
     </div>
   )
 }
-export const InputContainer = ({ children }) => {
-  return <div className={style.job__item}>{children}</div>
+export const InputContainer = ({ children, className }) => {
+  return <div className={clsx(className, style.job__item)}>{children}</div>
 }
 const Job = ({ handleClick }) => {
   const { postData, setPostData } = postStepContext()
