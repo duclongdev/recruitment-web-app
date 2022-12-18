@@ -5,18 +5,14 @@ import style from './style.module.scss'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { openModal } from '../../../../redux/modalSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectModal } from '../../../../redux/modalSlice'
+import { postStepContext } from '../../../../utils/MultiFormProvider'
+
 const validationSchema = yup.object({
   jobName: yup.string().required('Vui lòng điền tên công việc'),
   location: yup.string().required('Vui lòng nhập nơi bạn cần quảng cáo'),
 })
 
 export const BtnControl = ({ handleClick, handlePreview, showPreview }) => {
-  const dispatch = useDispatch()
-  const modal = useSelector(selectModal)
-  console.log('modal: ' + modal)
   return (
     <div className={style.btnControl}>
       <Button
@@ -34,8 +30,8 @@ export const BtnControl = ({ handleClick, handlePreview, showPreview }) => {
           <Button
             title="Xem trước"
             className={style.preview}
-            onClick={() => dispatch(openModal())}
-            type="button"
+            onClick={() => handlePreview()}
+            type="submit"
           />
         )}
 
@@ -56,6 +52,8 @@ export const InputContainer = ({ children }) => {
   return <div className={style.job__item}>{children}</div>
 }
 const Job = ({ handleClick }) => {
+  const { postData, setPostData } = postStepContext()
+
   const {
     register,
     handleSubmit,
@@ -65,13 +63,14 @@ const Job = ({ handleClick }) => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      jobName: 'duclong',
-      location: 'dafd',
+      jobName: postData.jobBasic?.jobName,
+      location: postData.jobBasic?.location,
     },
   })
 
   const onSubmit = (data) => {
-    console.log(data)
+    const jobBasic = data
+    setPostData({ ...postData, jobBasic })
     handleClick('next')
   }
   return (

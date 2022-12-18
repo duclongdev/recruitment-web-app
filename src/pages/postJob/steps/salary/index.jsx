@@ -8,19 +8,40 @@ import Input from '../../../../components/Input'
 import clsx from 'clsx'
 import { Checkbox } from '../jobDetail'
 import { salary } from '../../../../utils/dataForOptions'
+import { postStepContext } from '../../../../utils/MultiFormProvider'
 
 const Salary = ({ handleClick }) => {
-  const [range, setRange] = useState(true)
+  const { postData, setPostData } = postStepContext()
+  const [range, setRange] = useState(
+    postData.salary?.salaryType == 'range' || postData.salary?.salaryType === undefined
+      ? true
+      : false
+  )
   const [startSalary, setStartSalary] = useState('')
   const [endSalary, setEndSalary] = useState('')
-  const [checkBox, setCheckBox] = useState(true)
+  const [checkBox, setCheckBox] = useState(
+    postData.salary?.startAmount || postData.salary?.endAmount || postData.salary?.amount
+      ? false
+      : true
+  )
+
+  console.log('salary type: ' + postData.salary?.salaryType + '---- range: ' + range)
+
   const {
     register,
     handleSubmit,
     setError,
     clearErrors,
     formState: { errors },
-  } = useForm()
+  } = useForm({
+    defaultValues: {
+      salaryType: postData.salary?.salaryType,
+      startAmount: postData.salary?.startAmount,
+      endAmount: postData.salary?.endAmount,
+      amount: postData.salary?.amount,
+      time: postData.salary?.time ? postData.salary?.time : salary.times[0].value,
+    },
+  })
 
   const amount = {
     startAmount: 'startAmount',
@@ -30,7 +51,8 @@ const Salary = ({ handleClick }) => {
 
   const onSubmit = (data) => {
     let flag = true
-    if (data.noneSalary === false) {
+    console.log('none salary' + data.noneSalary)
+    if (data.noneSalary === false || data.noneSalary === undefined) {
       if (data.salaryType === 'range') {
         if (data.startAmount === '') {
           setError(amount.startAmount, { message: 'Không được để trống phần này' })
@@ -49,21 +71,34 @@ const Salary = ({ handleClick }) => {
           flag = false
         }
         if (flag === true) {
-          console.log(data)
+          const salary = {
+            salaryType: data.salaryType,
+            startAmount: data.startAmount,
+            endAmount: data.endAmount,
+            time: data.time,
+          }
+          setPostData({ ...postData, salary })
           handleClick('next')
         }
       } else {
         if (data.amount === '') setError(amount.amount, { message: 'Không được để trống phần này' })
         else {
-          console.log(data)
+          const salary = {
+            salaryType: data.salaryType,
+            amount: data.amount,
+            time: data.time,
+          }
+          setPostData({ ...postData, salary })
           handleClick('next')
         }
       }
     } else {
-      console.log('completed')
+      console.log('khong save luong')
+      setPostData({ ...postData, salary: 'noneSalary' })
       handleClick('next')
     }
   }
+
   const handleStartAmount = (e) => {
     if (isNaN(e.target.value)) {
       setError(amount.startAmount, { message: 'Số tiền không hợp lệ' })
@@ -106,8 +141,8 @@ const Salary = ({ handleClick }) => {
   }
 
   const handleNoneSalary = (e) => {
-    if (e.target.checked === true) console.log(e.target.checked)
-    clearErrors([amount.startAmount, amount.endAmount, amount.amount])
+    if (e.target.checked === true)
+      clearErrors([amount.startAmount, amount.endAmount, amount.amount])
   }
 
   return (
@@ -173,7 +208,6 @@ const Salary = ({ handleClick }) => {
             <Checkbox
               register={register}
               label="Tôi chọn không bao gồm thông tin thanh toán. Tôi hiểu rằng những công việc không có loại thông tin này sẽ nhận được ít hồ sơ chất lượng hơn."
-              value={'nothing'}
               data="noneSalary"
               onChange={handleNoneSalary}
             />

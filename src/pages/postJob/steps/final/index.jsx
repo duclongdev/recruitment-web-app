@@ -1,9 +1,16 @@
 import React from 'react'
 import style from './style.module.scss'
-import Button from '../../../../components/Button'
-import { BtnControl } from '../job'
+import { postStepContext } from '../../../../utils/MultiFormProvider'
+import { Button } from '../../../../components'
+import { useNavigate } from 'react-router-dom'
 
-const Final = ({ handleClick }) => {
+const Final = () => {
+  const navigate = useNavigate()
+  const { postData } = postStepContext()
+  console.log(postData)
+  const navigateHome = () => {
+    navigate('/', { replace: true })
+  }
   return (
     <div className={style.final}>
       <div className={style.container}>
@@ -15,8 +22,8 @@ const Final = ({ handleClick }) => {
         </div>
         <div className={style.title}>Chúc mừng!</div>
         <div className={style.decription}>Bài tuyển dụng của bạn đã được đăng</div>
-        <BtnControl handleClick={handleClick} isValid={true} />
       </div>
+      <Button title="Quay về trang chủ" onClick={navigateHome} />
     </div>
   )
 }

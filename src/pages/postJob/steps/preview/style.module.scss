@@ -10,7 +10,7 @@
 .container {
   box-sizing: border-box;
   margin: 0px;
-  min-width: 0px;
+  min-width: 200px;
   background-color: rgba(45, 45, 45, 0.5);
   height: 100%;
   left: 0px;
@@ -27,6 +27,8 @@
 
 .preview {
   background-color: white;
+  width: 40%;
+  height: 90%;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
   -moz-border-radius: 0.5rem;
@@ -39,7 +41,7 @@
     padding: 1.5rem 0.75rem 3rem 1.5rem;
 
     border-bottom: 1px solid $grey;
-    margin-bottom: 50px;
+
     img {
       width: 100px;
     }
@@ -53,19 +55,19 @@
   &__body {
     border: 1px $grey solid;
     border-radius: 0.5rem;
-    margin: 1.5rem;
+    margin: 1rem;
   }
   &__bot {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 0px 12px 12px;
   }
 }
 
 .main {
   &__header {
     border-bottom: 1px $grey solid;
-    margin-bottom: 20px;
+
     h2 {
       margin: 0px;
       font-size: 1.25rem;
@@ -73,7 +75,7 @@
       line-height: 1.5;
     }
     &__item {
-      padding: 1.5rem;
+      padding: 1rem;
     }
     &__bot {
       color: rgb(89, 89, 89);
@@ -92,5 +94,24 @@
   border: 1px $grey solid;
   &:hover {
     background-color: rgb(218, 247, 226);
+  }
+}
+
+.main__body {
+  padding: 20px;
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.applyDisable {
+  font-size: 0.85rem;
+  padding: 0.5625rem 1rem;
+}
+
+.main__body__insights {
+  padding-top: 10px;
+  border-top: 1px $grey solid;
+  h3 {
+    font-size: 1.1rem;
   }
 }

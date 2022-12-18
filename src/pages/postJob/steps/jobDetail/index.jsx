@@ -8,12 +8,17 @@ import { Error } from '../../../../components/Input'
 import clsx from 'clsx'
 import { DownArrowIcon } from '../../../../assets/icon'
 import { jobDetail } from '../../../../utils/dataForOptions'
+import { postStepContext } from '../../../../utils/MultiFormProvider'
 
-export const Checkbox = ({ label, register, value, onChange, data = 'jobType' }) => {
+export const Checkbox = ({ label, register, value, onChange, data = 'jobType', checked }) => {
   return (
     <label className={style.container}>
       <span className={style.label}>{label}</span>
-      <input type="checkbox" {...register(data)} value={value} onChange={onChange} />
+      {checked ? (
+        <input type="checkbox" {...register(data)} value={value} onChange={onChange} checked />
+      ) : (
+        <input type="checkbox" {...register(data)} value={value} onChange={onChange} />
+      )}
       <span className={style.checkmark}></span>
     </label>
   )
@@ -66,6 +71,8 @@ const validationSchema = yup.object({
 })
 
 const JobDetail = ({ handleClick }) => {
+  const { postData, setPostData } = postStepContext()
+
   const {
     register,
     handleSubmit,
@@ -75,14 +82,15 @@ const JobDetail = ({ handleClick }) => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      jobType: ['intern'],
-      amountOfJob: '1',
-      amountOfWeek: '1 đến 3 ngày',
+      jobType: postData.jobDetail?.jobType,
+      amountOfJob: postData.jobDetail?.amountOfJob,
+      amountOfWeek: postData.jobDetail?.amountOfWeek,
     },
   })
 
   const onSubmit = (data) => {
-    console.log(data)
+    const jobDetail = data
+    setPostData({ ...postData, jobDetail })
     handleClick('next')
   }
 

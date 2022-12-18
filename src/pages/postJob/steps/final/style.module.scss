@@ -32,6 +32,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #4ade80;
+  border-radius: 99999px;
+  -webkit-border-radius: 99999px;
+  -moz-border-radius: 99999px;
+  -ms-border-radius: 99999px;
+  -o-border-radius: 99999px;
 }
 
 .checkmark__circle {
@@ -45,9 +51,9 @@
 }
 
 .checkmark {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
   display: block;
   stroke-width: 2;
   stroke: #fff;
@@ -55,6 +61,10 @@
   margin: 10% auto;
   box-shadow: inset 0px 0px 0px #4ade80;
   animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
 }
 
 .checkmark__check {

@@ -3,13 +3,11 @@ import style from './style.module.scss'
 import { UseContextProvider } from '../../utils/MultiFormProvider'
 import { Final, Info, Job, Preview, JobDetail } from './steps'
 import Stepper from './stepper'
-// import StepperControl from './stepperControl'
 import clsx from 'clsx'
 import Salary from './steps/salary'
 import Description from './steps/description'
 const PostJob = () => {
   const [currentStep, setCurrentStep] = useState(1)
-  const [preview, setPreview] = useState(true)
 
   const steps = [
     'Account Information',

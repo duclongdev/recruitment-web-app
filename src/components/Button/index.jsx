@@ -12,7 +12,7 @@ const Button = ({ title, type, onClick, className, disable, contrast, fullWidth 
       type={type}
       onClick={onClick}
     >
-      <span style={{ fontWeight: '700', fontSize: '1rem' }}>{title}</span>
+      {title}
     </button>
   )
 }

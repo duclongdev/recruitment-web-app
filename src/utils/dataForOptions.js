@@ -35,7 +35,7 @@ const jobDetail = {
     { value: '1 đến 2 tuần', label: '1 đến 2 tuần' },
     { value: '2 đến 4 tuần', label: '2 đến 4 tuần' },
     { value: '1 đến 3 ngày', label: '1 đến 3 ngày' },
-    { value: 'trên 4 tuần', label: '1 đến 3 ngày' },
+    { value: 'trên 4 tuần', label: 'Trên 4 tuần' },
   ],
 }
 

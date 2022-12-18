@@ -10,6 +10,8 @@
   border-radius: 8px;
   color: white;
   outline: none;
+  font-size: 1rem;
+  font-weight: 700;
 
   &:hover {
     background-color: $main-hover;
@@ -25,9 +27,6 @@
   background-color: white;
   border: 1px $grey solid;
   color: $main;
-  span {
-    color: $main;
-  }
   &:hover {
     border-color: $main;
     background-color: rgb(227, 226, 226);

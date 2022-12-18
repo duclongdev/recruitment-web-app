@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import errorMessages from '../../../../utils/errorMessage.json'
 import Button from '../../../../components/Button'
 import { useSelector } from 'react-redux'
+import { postStepContext } from '../../../../utils/MultiFormProvider'
 
 const validationSchema = yup.object({
   companyName: yup.string().required(errorMessages.required.fullName),
@@ -18,6 +19,7 @@ const validationSchema = yup.object({
     .matches(RegExp.email, errorMessages.emailValidation),
 })
 const Info = ({ handleClick }) => {
+  const { postData, setPostData } = postStepContext()
   const user = useSelector((state) => state.user.value)
   const {
     register,
@@ -36,7 +38,14 @@ const Info = ({ handleClick }) => {
   })
 
   const onSubmit = (data) => {
-    console.log(data)
+    // const companyInfo = {
+    //   companyName: data.companyName,
+    //   email: data.email,
+    //   fullName: data.fullName,
+    //   phoneNumber: data.phoneNumber,
+    // }
+    const companyInfo = data
+    setPostData({ ...postData, companyInfo })
     handleClick('next')
   }
   return (
