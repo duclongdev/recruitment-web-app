@@ -11,11 +11,13 @@ const StepperControl = ({ handleClick, currentStep, steps, className }) => {
         onClick={() => handleClick()}
         className={clsx(currentStep === 1 ? style.notAllow : '', style.btn)}
       />
-      <Button
-        title={currentStep === steps.length - 1 ? 'Hoàn thành' : 'Lưu và tiếp tục'}
-        onClick={() => handleClick('next')}
-        className={style.btn}
-      />
+      <div>
+        <Button
+          title={currentStep === steps.length - 1 ? 'Hoàn thành' : 'Lưu và tiếp tục'}
+          onClick={() => handleClick('next')}
+          className={style.btn}
+        />
+      </div>
     </div>
   )
 }

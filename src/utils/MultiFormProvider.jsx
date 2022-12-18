@@ -1,17 +1,17 @@
 import { createContext, useContext, useState } from 'react'
 
-const StepperContext = createContext({ userData: '', setUserData: null })
+const StepperContext = createContext({ postData: '', setPostData: null })
 
 export function UseContextProvider({ children }) {
-  const [userData, setUserData] = useState('')
+  const [postData, setPostData] = useState('')
 
   return (
-    <StepperContext.Provider value={{ userData, setUserData }}>{children}</StepperContext.Provider>
+    <StepperContext.Provider value={{ postData, setPostData }}>{children}</StepperContext.Provider>
   )
 }
 
-export function useStepperContext() {
-  const { userData, setUserData } = useContext(StepperContext)
+export function postStepContext() {
+  const { postData, setPostData } = useContext(StepperContext)
 
-  return { userData, setUserData }
+  return { postData, setPostData }
 }

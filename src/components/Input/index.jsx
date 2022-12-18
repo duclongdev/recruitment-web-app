@@ -44,14 +44,19 @@ const Input = ({
           [style.fieldValid]: !error,
         })}
       >
-        <input
-          {...register(id)}
-          placeholder={placeholder}
-          type={type}
-          id={id}
-          value={value}
-          onChange={onChange}
-        />
+        {onChange ? (
+          <input
+            {...register(id)}
+            placeholder={placeholder}
+            type={type}
+            id={id}
+            value={value}
+            onChange={onChange}
+          />
+        ) : (
+          <input {...register(id)} placeholder={placeholder} type={type} id={id} value={value} />
+        )}
+
         <div className={style.children}>{children}</div>
       </div>
       <Error error={error} />

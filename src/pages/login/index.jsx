@@ -121,7 +121,7 @@ const Login = ({ type }) => {
           <form onSubmit={handleSubmit(onSubmit)} className={style.login__form__item}>
             <Input
               register={register}
-              label={<span className={style.label}>Email</span>}
+              label={'Email'}
               id="email"
               type="text"
               error={errors.email}
@@ -130,7 +130,7 @@ const Login = ({ type }) => {
             <div className={style.hi}>
               <Input
                 register={register}
-                label={<span className={style.label}>Mật khẩu</span>}
+                label="Mật khẩu"
                 id="password"
                 type="password"
                 required
@@ -141,7 +141,7 @@ const Login = ({ type }) => {
               </span>
             </div>
 
-            <Button title="Đăng nhập" type="submit" />
+            <Button title="Đăng nhập" type="submit" fullWidth />
 
             <div className={style.email__signUp}>
               <span>

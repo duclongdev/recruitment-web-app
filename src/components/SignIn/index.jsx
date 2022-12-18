@@ -199,7 +199,7 @@ const SignIn = () => {
         </div>
       </div>
 
-      <Button title="Đăng ký" type="submit" />
+      <Button title="Đăng ký" type="submit" fullWidth />
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
         <span>
           Bạn đã có tài khoản <Link to="/login-employ">Đăng nhập</Link>

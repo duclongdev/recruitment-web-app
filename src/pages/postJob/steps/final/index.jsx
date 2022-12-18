@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import style from './style.module.scss'
-import Button from '../../../../components/Button'
-import { BtnControl } from '../job'
+import { postStepContext } from '../../../../utils/MultiFormProvider'
+import { Button } from '../../../../components'
+import Lottie from 'lottie-web'
+import { useNavigate } from 'react-router-dom'
+import doneAnimation from '../../../../assets/animations/done.json'
 
-const Final = ({ handleClick }) => {
+const Final = () => {
+  const navigate = useNavigate()
+  const container = useRef(null)
+  const { postData } = postStepContext()
+  console.log('render')
+  useEffect(() => {
+    const instance = Lottie.loadAnimation({
+      container: container.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: doneAnimation,
+    })
+    return () => instance.destroy()
+  }, [])
+
+  console.log(postData)
+  const navigateHome = () => {
+    navigate('/', { replace: true })
+  }
   return (
     <div className={style.final}>
-      <div className={style.container}>
-        <div className={style.wrapper}>
-          <svg className={style.checkmark} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-            <circle className={style.checkmark__circle} cx="26" cy="26" r="25" fill="none" />
-            <path className={style.checkmark__check} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-          </svg>
-        </div>
-        <div className={style.title}>Chúc mừng!</div>
-        <div className={style.decription}>Bài tuyển dụng của bạn đã được đăng</div>
-        <BtnControl handleClick={handleClick} isValid={true} />
-      </div>
+      <div className={style.container} ref={container}></div>
+      <div className={style.description}>Bài tuyển dụng của bạn đã được đăng</div>
+      <Button title="Quay về trang chủ" onClick={navigateHome} />
     </div>
   )
 }

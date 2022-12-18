@@ -95,7 +95,7 @@ const Signup = () => {
             type="password"
             error={errors.confirmPassword}
           />
-          <Button title="Đăng ký" style="submit" />
+          <Button title="Đăng ký" style="submit" fullWidth />
         </form>
       </div>
     </div>

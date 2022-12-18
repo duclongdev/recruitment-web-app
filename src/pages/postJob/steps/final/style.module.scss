@@ -1,78 +1,30 @@
+@import "../../../../sass/color";
+
 .final {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 0px 50px 100px 50px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 .container {
-  display: flex;
-  flex-direction: column;
+  width: 250px;
+  height: 250px;
+}
+.center {
+  display: none;
+  justify-content: space-around;
   align-items: center;
+  background-color: red;
 }
-@keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes scale {
-  0%,
-  100% {
-    transform: none;
-  }
-
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-
-@keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px #4ade80;
-  }
-}
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.checkmark__circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: #4ade80;
-  fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-.checkmark {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  margin: 10% auto;
-  box-shadow: inset 0px 0px 0px #4ade80;
-  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-}
-
-.checkmark__check {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-}
-.title {
-  margin-top: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: green;
-}
-.discription {
-  font-size: 1.125rem /* 18px */;
-  line-height: 1.75rem /* 28px */;
-  font-size: 1.125rem /* 18px */;
-  line-height: 1.75rem /* 28px */;
-  color: rgb(107 114 128);
+.description{
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
 }

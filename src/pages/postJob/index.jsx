@@ -3,7 +3,6 @@ import style from './style.module.scss'
 import { UseContextProvider } from '../../utils/MultiFormProvider'
 import { Final, Info, Job, Preview, JobDetail } from './steps'
 import Stepper from './stepper'
-import StepperControl from './stepperControl'
 import clsx from 'clsx'
 import Salary from './steps/salary'
 import Description from './steps/description'
@@ -48,14 +47,6 @@ const PostJob = () => {
       <div className={clsx(currentStep !== 1 ? style.stepper : null)}>
         <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
       </div>
-      {/* {currentStep !== steps.length && (
-        <StepperControl
-          handleClick={handleClick}
-          currentStep={currentStep}
-          steps={steps}
-          className={style.hi}
-        />
-      )} */}
     </div>
   )
 }
