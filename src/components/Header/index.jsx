@@ -1,163 +1,106 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import "./Header.css";
+import React from 'react'
+import logo from '../../assets/logo.png'
+import style from './style.module.scss'
+import clsx from 'clsx'
+import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Button, Dropdown, Space } from 'antd'
+import { ProfileOutlined, SettingOutlined, HeartOutlined } from '@ant-design/icons'
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const items = [
+  {
+    label: (
+      <a style={{ textDecoration: 'none' }} href="/employee">
+        Hồ sơ
+      </a>
+    ),
+    icon: <ProfileOutlined style={{ marginTop: '1px' }} />,
+  },
+  {
+    label: (
+      <a style={{ textDecoration: 'none' }} rel="noopener noreferrer" href="https://www.aliyun.com">
+        Việc làm của tôi
+      </a>
+    ),
+    icon: <HeartOutlined />,
+  },
+  {
+    label: (
+      <a
+        style={{ textDecoration: 'none' }}
+        rel="noopener noreferrer"
+        href="https://www.luohanacademy.com"
+      >
+        Cài đặt
+      </a>
+    ),
+    icon: <SettingOutlined />,
+  },
+]
 
-function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
+const ItemHeader = ({ path, title }) => {
+  const navigator = useNavigate()
+  const location = useLocation()
+  const handleNavigate = (path) => {
+    navigator(path, { replace: true })
+  }
   return (
-    <AppBar sx={{ backgroundColor: "black" }} position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+    <div
+      className={clsx(style.header__item, {
+        [style.active]: location.pathname === path ? true : false,
+      })}
+      onClick={() => handleNavigate(path)}
+    >
+      <span>{title}</span>
+    </div>
+  )
 }
-export default Header;
+
+const Header = () => {
+  const user = useSelector((state) => state.user.value)
+  return (
+    <div className={style.header}>
+      <div className={style.header__right}>
+        <img src={logo} alt="logo.png" className={style.header__logo} />
+        <>
+          <ItemHeader path="/" title="Tìm việc" />
+          <ItemHeader path="/review-company" title="Đánh giá công ty" />
+          {user?.role !== 'EMPLOYEE' && <ItemHeader path="/manage-post" title="Quản lý bài đăng" />}
+        </>
+      </div>
+      <div className={style.header__right}>
+        {user?.role === 'EMPLOYEE' ? (
+          <>
+            <ItemHeader path="/post-job" title="Đăng bài" />
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottomRight"
+              arrow={{
+                pointAtCenter: true,
+              }}
+            >
+              <div className={clsx(style.header__item)}>
+                <span>{user.fullName}</span>
+              </div>
+            </Dropdown>
+          </>
+        ) : user?.role === 'USER' ? (
+          <>
+            <ItemHeader path="/user" title={<span>{user.name}</span>} />
+          </>
+        ) : (
+          <>
+            <ItemHeader path="/login" title="Đăng nhập" />
+            <span className={style.header__span}></span>
+            <ItemHeader path="/login-employee" title="Nhà tuyển dụng / Đăng tin" />
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Header

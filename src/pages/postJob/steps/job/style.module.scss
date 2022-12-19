@@ -1,0 +1,66 @@
+@import '../../../../sass/color';
+
+.job {
+  background-color: rgb(241 241 241);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  &__header {
+    h1 {
+      flex: 1;
+      font-size: 1.75rem;
+      align-self: center;
+    }
+    img {
+      flex: 1;
+      height: 10.5rem;
+    }
+  }
+}
+
+.btnControl,
+.job__item,
+.job__header {
+  display: flex;
+  width: 770px;
+  background-color: white;
+  border-radius: 10px;
+  padding: {
+    left: 3rem;
+    right: 3rem;
+  }
+  margin: 1rem;
+}
+
+.btnControl,
+.job__item {
+  padding: {
+    top: 1.5rem;
+    bottom: 1.5rem;
+  }
+}
+.btnControl {
+  justify-content: space-between;
+}
+.job__item {
+  display: block;
+}
+
+.back,
+.next {
+  width: fit-content;
+}
+.right {
+  display: flex;
+}
+
+.preview {
+  background-color: white;
+  color: $main;
+  margin-right: 20px;
+  &:hover {
+    background-color: rgb(218, 247, 226);
+  }
+}

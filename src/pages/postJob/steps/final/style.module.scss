@@ -1,0 +1,30 @@
+@import "../../../../sass/color";
+
+.final {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 0px 50px 100px 50px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.container {
+  width: 250px;
+  height: 250px;
+}
+.center {
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  background-color: red;
+}
+.description{
+  margin-bottom: 50px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+}

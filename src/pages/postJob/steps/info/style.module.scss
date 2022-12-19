@@ -1,0 +1,41 @@
+@import '../../../../sass/color';
+.info {
+  display: flex;
+  flex-direction: row;
+  margin: {
+    top: 50px;
+    left: 150px;
+    right: 150px;
+  }
+}
+
+.imgContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 450px;
+  }
+}
+.form {
+  flex: 1;
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+.required {
+  &::after {
+    content: ' *';
+    color: $required;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.btn {
+  width: fit-content;
+}

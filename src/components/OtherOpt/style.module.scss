@@ -1,0 +1,18 @@
+@import '../../sass/color';
+
+.otherOpt {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  padding: {
+    top: 10px;
+    bottom: 20px;
+  }
+  a {
+    color: $main;
+    &:hover {
+      text-decoration: underline;
+    }
+    cursor: pointer;
+  }
+}
