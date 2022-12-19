@@ -1,14 +1,17 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import style from './style.module.scss'
 import { Search, Button, OtherOpt, OptionShow, Jobs, History } from '../../components'
 import clsx from 'clsx'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { JobAPI } from '../../api/job'
 
 const Home = () => {
   const [show, setShow] = useState(true)
   const [job, setJob] = useState(true)
   const [history, setHistory] = useState(false)
+  const [jobs, setJobs] = useState([])
+
   const isChoose = (check) => {
     if (job === true && check === false) {
       setShow(false)
@@ -22,40 +25,14 @@ const Home = () => {
     }
   }
 
+  useEffect(() => {
+    JobAPI.getJobs().then((data) => {
+      setJobs(data.data)
+      console.log(data.data)
+    })
+  }, [])
   const dologin = () => toast('Wow so easy!')
-
-  const listJob = [
-    {
-      name: 'Lễ tân',
-      companyName: 'ăn không ngồi rồi',
-      location: 'TP Hồ Chí Minh',
-      shortDescription: 'cu dài 19cm',
-    },
-    {
-      name: 'Lễ tân',
-      companyName: 'ăn không ngồi rồi',
-      location: 'TP Hồ Chí Minh',
-      shortDescription: 'cu dài 19cm',
-    },
-    {
-      name: 'Lễ tân',
-      companyName: 'ăn không ngồi rồi',
-      location: 'TP Hồ Chí Minh',
-      shortDescription: 'cu dài 19cm',
-    },
-    {
-      name: 'Lễ tân',
-      companyName: 'ăn không ngồi rồi',
-      location: 'TP Hồ Chí Minh',
-      shortDescription: 'cu dài 19cm',
-    },
-    {
-      name: 'Lễ tân',
-      companyName: 'ăn không ngồi rồi',
-      location: 'TP Hồ Chí Minh',
-      shortDescription: 'cu dài 19cm',
-    },
-  ]
+  
   return (
     <>
       <div>
@@ -80,7 +57,7 @@ const Home = () => {
             <OptionShow />
           </div>
         </div>
-        {show ? <Jobs listJob={listJob} /> : <History />}
+        {show ? <Jobs  jobs={jobs} /> : <History />}
       </div>
       <ToastContainer />
     </>

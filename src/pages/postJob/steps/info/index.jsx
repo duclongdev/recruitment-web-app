@@ -8,6 +8,7 @@ import errorMessages from '../../../../utils/errorMessage.json'
 import Button from '../../../../components/Button'
 import { useSelector } from 'react-redux'
 import { postStepContext } from '../../../../utils/MultiFormProvider'
+import { selectUser } from '../../../../redux/usrSlice'
 
 const validationSchema = yup.object({
   companyName: yup.string().required(errorMessages.required.fullName),
@@ -20,7 +21,7 @@ const validationSchema = yup.object({
 })
 const Info = ({ handleClick }) => {
   const { postData, setPostData } = postStepContext()
-  const user = useSelector((state) => state.user.value)
+  const user = useSelector(selectUser)
   const {
     register,
     handleSubmit,
@@ -38,13 +39,8 @@ const Info = ({ handleClick }) => {
   })
 
   const onSubmit = (data) => {
-    // const companyInfo = {
-    //   companyName: data.companyName,
-    //   email: data.email,
-    //   fullName: data.fullName,
-    //   phoneNumber: data.phoneNumber,
-    // }
-    const companyInfo = data
+    const userId = user._id
+    const companyInfo = { ...data, userId }
     setPostData({ ...postData, companyInfo })
     handleClick('next')
   }

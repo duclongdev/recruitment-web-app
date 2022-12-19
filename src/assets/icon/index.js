@@ -7,6 +7,7 @@ import DownArrowIcon from './DownArrow'
 import BoldIcon from './Bold'
 import ItalicIcon from './Italic'
 import UnOrderListIcon from './UnOrderList'
+import MoneyIcon from './Money'
 export {
   CheckedIcon,
   SearchIcon,
@@ -17,4 +18,5 @@ export {
   BoldIcon,
   ItalicIcon,
   UnOrderListIcon,
+  MoneyIcon
 }

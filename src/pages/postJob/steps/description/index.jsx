@@ -11,6 +11,7 @@ import clsx from 'clsx'
 import { postStepContext } from '../../../../utils/MultiFormProvider'
 import { useDispatch } from 'react-redux'
 import { openModal, setDataPostJob } from '../../../../redux/modalSlice'
+import { JobAPI } from '../../../../api/job'
 
 yup.addMethod(yup.mixed, 'length', function (msg) {
   return this.test({
@@ -42,8 +43,22 @@ const Description = ({ handleClick }) => {
         : EditorState.createEmpty(),
     },
   })
+  const confirmMessage =
+    "'Sau bước này bài viết của bạn sẽ được đăng... Vui lòng xem kỹ trước khi đăng'"
+  const savePostJob = async (data) => {
+    console.log(data)
+    JobAPI.postJob(data)
+      .then((res) => {
+        console.log(res.response)
+        console.log('post job successful')
+      })
+      .catch((error) => {
+        console.log(error.response.data)
+      })
+  }
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+  
     const jobDescription = convertToRaw(data.jobDescription.getCurrentContent())
     setPostData({ ...postData, jobDescription })
     if (prepare === true) {
@@ -54,12 +69,11 @@ const Description = ({ handleClick }) => {
       setPrepare(false)
     } else {
       setPostData({ ...postData, jobDescription })
-      if (
-        window.confirm(
-          'Sau bước này bài viết của bạn sẽ được đăng... Vui lòng xem kỹ trước khi đăng'
-        ) === true
-      )
+      if (window.confirm(confirmMessage) === true) {
+        const convertToJson = JSON.stringify(postData.jobDescription)
+        savePostJob({ ...postData, jobDescription: convertToJson })
         handleClick('next')
+      }
     }
   }
 

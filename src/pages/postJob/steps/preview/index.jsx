@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import { selectDataPostJob } from '../../../../redux/modalSlice'
 import draftToHtml from 'draftjs-to-html'
 import { getType } from '@reduxjs/toolkit'
+import { convertFromRaw, EditorState } from 'draft-js'
 
 const Header = () => (
   <div className={style.preview__header}>
@@ -21,10 +22,39 @@ const Header = () => (
   </div>
 )
 
-const Body = ({ data }) => {
-  const marked = draftToHtml(data.jobDescription)
-  console.log(data)
+const getTime = (time) => {
+  switch (time) {
+    case 'perMonth':
+      return 'mỗi tháng'
+    case 'perDay':
+      return 'mỗi ngày'
+    case 'perWeek':
+      return 'mỗi tuần'
+    case 'perYear':
+      return 'mỗi năm'
+    default:
+      return ''
+  }
+}
 
+const getJobType = (jobType) => {
+  switch (jobType) {
+    case 'intern':
+      return 'Thực tập'
+    case 'fullTime':
+      return 'Toàn thời gian'
+    case 'partTime':
+      return 'Bán thời gian'
+    case 'temporary':
+      return 'Thời vụ'
+    case 'permanent':
+      return 'Dài hạn'
+    default:
+      return ''
+  }
+}
+
+export const showSalary = (salary) => {
   const getType = (salaryType) => {
     switch (salaryType) {
       case 'startingAmount':
@@ -35,38 +65,24 @@ const Body = ({ data }) => {
         return ''
     }
   }
+  return (
+    <span>
+      {salary.salaryType === 'range' ? (
+        <span>
+          {salary.startAmount}₫ - {salary.endAmount}₫
+        </span>
+      ) : (
+        <span>
+          {getType(salary.salaryType)} {salary.amount}₫{' '}
+        </span>
+      )}{' '}
+      <span>{getTime(salary.time)}</span>
+    </span>
+  )
+}
 
-  const getTime = (time) => {
-    switch (time) {
-      case 'perMonth':
-        return 'mỗi tháng'
-      case 'perDay':
-        return 'mỗi ngày'
-      case 'perWeek':
-        return 'mỗi tuần'
-      case 'perYear':
-        return 'mỗi năm'
-      default:
-        return ''
-    }
-  }
-
-  const getJobType = (jobType) => {
-    switch (jobType) {
-      case 'intern':
-        return 'Thực tập'
-      case 'fullTime':
-        return 'Toàn thời gian'
-      case 'partTime':
-        return 'Bán thời gian'
-      case 'temporary':
-        return 'Thời vụ'
-      case 'permanent':
-        return 'Dài hạn'
-      default:
-        return ''
-    }
-  }
+const Body = ({ data }) => {
+  const marked = draftToHtml(data.jobDescription)
   return (
     <div className={style.preview__body}>
       <div className={style.main}>
@@ -87,23 +103,7 @@ const Body = ({ data }) => {
           <div className={style.main__body__insights}>
             <h3>Chi tiết công việc</h3>
 
-            {data.salary !== 'noneSalary' ? (
-              <div>
-                Mức lương:{' '}
-                <span>
-                  {data.salary.salaryType === 'range' ? (
-                    <span>
-                      {data.salary.startAmount}₫ - {data.salary.endAmount}₫
-                    </span>
-                  ) : (
-                    <span>
-                      {getType(data.salary.salaryType)} {data.salary.amount}₫{' '}
-                    </span>
-                  )}{' '}
-                  <span>{getTime(data.salary.time)}</span>
-                </span>
-              </div>
-            ) : null}
+            {data.salary !== 'noneSalary' ? <div>Mức lương: {showSalary(data.salary)} </div> : null}
             <div>
               Loại công việc:{' '}
               {data.jobDetail.jobType.map((item, index) => {
