@@ -8,10 +8,22 @@
 }
 .listJob {
   padding: 20px;
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 900;
+    margin: {
+      top: 7px;
+      bottom: 7px;
+    }
+  }
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
 }
 .job {
   width: 470px;
-  height: 400px;
+
   margin: {
     top: 20px;
     bottom: 20px;
@@ -21,7 +33,20 @@
   user-select: none;
 
   @include border-component;
+  &__salary {
+    margin: {
+      top: 20px;
+      bottom: 20px;
+    }
 
+    width: fit-content;
+    background: #f3f2f1;
+    color: #595959;
+    font-weight: 800;
+    font-size: 0.875rem;
+    padding: 0.1875rem 0.5rem;
+    border-radius: 0.25rem;
+  }
   &:active {
     border: 1px $main solid;
   }
@@ -29,14 +54,40 @@
     padding: 10px;
     list-style: circle;
   }
+
+  &:hover {
+    transition-duration: 300ms;
+    z-index: 10000;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
 }
 .jobDetail {
   margin-top: 20px;
   width: 540px;
   height: 97vh;
-
   position: sticky;
   top: 10px;
+  &__header {
+    height: 30;
+  }
+  &__body {
+    overflow-y: auto;
+    height: 65vh;
+    display: inline-block;
+    overflow-y: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 0;
+    padding-top: 1rem !important;
+    font-size: 0.85rem;
+    p{
+      font-size: 0.85rem;
+    }
+  }
 }
 h3 {
   font-weight: 600;
@@ -67,4 +118,14 @@ h3 {
       display: flex;
     }
   }
+}
+
+.posted {
+  color: #6f6f6f;
+  font-size: 0.75rem;
+}
+
+.job__active {
+  border: 2px $main solid;
+  background-color: rgb(218, 244, 224);
 }
