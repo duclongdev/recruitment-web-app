@@ -5,6 +5,39 @@ import clsx from 'clsx'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Button, Dropdown, Space } from 'antd'
+import { ProfileOutlined, SettingOutlined, HeartOutlined } from '@ant-design/icons'
+
+const items = [
+  {
+    label: (
+      <a style={{ textDecoration: 'none' }} href="/employee">
+        Hồ sơ
+      </a>
+    ),
+    icon: <ProfileOutlined style={{ marginTop: '1px' }} />,
+  },
+  {
+    label: (
+      <a style={{ textDecoration: 'none' }} rel="noopener noreferrer" href="https://www.aliyun.com">
+        Việc làm của tôi
+      </a>
+    ),
+    icon: <HeartOutlined />,
+  },
+  {
+    label: (
+      <a
+        style={{ textDecoration: 'none' }}
+        rel="noopener noreferrer"
+        href="https://www.luohanacademy.com"
+      >
+        Cài đặt
+      </a>
+    ),
+    icon: <SettingOutlined />,
+  },
+]
 
 const ItemHeader = ({ path, title }) => {
   const navigator = useNavigate()
@@ -30,20 +63,29 @@ const Header = () => {
     <div className={style.header}>
       <div className={style.header__right}>
         <img src={logo} alt="logo.png" className={style.header__logo} />
-        {user?.role === 'EMPLOYEE' ? (
-          'EMPLOYEE'
-        ) : (
-          <>
-            <ItemHeader path="/" title="Tìm việc" />
-            <ItemHeader path="/review-company" title="Đánh giá công ty" />
-          </>
-        )}
+        <>
+          <ItemHeader path="/" title="Tìm việc" />
+          <ItemHeader path="/review-company" title="Đánh giá công ty" />
+          {user?.role !== 'EMPLOYEE' && <ItemHeader path="/manage-post" title="Quản lý bài đăng" />}
+        </>
       </div>
       <div className={style.header__right}>
         {user?.role === 'EMPLOYEE' ? (
           <>
             <ItemHeader path="/post-job" title="Đăng bài" />
-            <ItemHeader path="/employee" title={user.fullName} />
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottomRight"
+              arrow={{
+                pointAtCenter: true,
+              }}
+            >
+              <div className={clsx(style.header__item)}>
+                <span>{user.fullName}</span>
+              </div>
+            </Dropdown>
           </>
         ) : user?.role === 'USER' ? (
           <>

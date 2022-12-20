@@ -20,7 +20,6 @@ const User = () => {
   return (
     <div>
       <button onClick={handleSignOut}>log out</button>
-      User
     </div>
   )
 }
