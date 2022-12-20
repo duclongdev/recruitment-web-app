@@ -39,14 +39,14 @@ const ListJob = ({ jobs, setJobDetail, jobDetail }) => {
           <h2>{job.jobName}</h2>
           <p>{job.companyName}</p>
           <p>{job.location}</p>
-          <div className={style.job__salary}>
-            {job.salary !== 'noneSalary' ? (
-              <div style={{ display: 'flex' }}>
-                <MoneyIcon />
-                {showSalary(job.salary)}
-              </div>
-            ) : null}
-          </div>
+
+          {job.salary !== null ? (
+            <div className={style.job__salary} style={{ display: 'flex' }}>
+              <MoneyIcon />
+              {showSalary(job.salary)}
+            </div>
+          ) : null}
+
           <div className={style.posted}>{convertTime(job.createdAt)}</div>
         </div>
       ))}

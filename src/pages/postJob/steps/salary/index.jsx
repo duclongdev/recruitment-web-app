@@ -19,13 +19,12 @@ const Salary = ({ handleClick }) => {
   )
   const [startSalary, setStartSalary] = useState('')
   const [endSalary, setEndSalary] = useState('')
+  const [salaryAmount, setSalaryAmount] = useState('')
   const [checkBox, setCheckBox] = useState(
     postData.salary?.startAmount || postData.salary?.endAmount || postData.salary?.amount
       ? false
       : true
   )
-
-  console.log('salary type: ' + postData.salary?.salaryType + '---- range: ' + range)
 
   const {
     register,
@@ -51,7 +50,7 @@ const Salary = ({ handleClick }) => {
 
   const onSubmit = (data) => {
     let flag = true
-    console.log('none salary' + data.noneSalary)
+
     if (data.noneSalary === false || data.noneSalary === undefined) {
       if (data.salaryType === 'range') {
         if (data.startAmount === '') {
@@ -93,33 +92,25 @@ const Salary = ({ handleClick }) => {
         }
       }
     } else {
-      console.log('khong save luong')
       setPostData({ ...postData, salary: 'noneSalary' })
       handleClick('next')
     }
   }
 
+  const addCommas = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+  const removeNonNumeric = (num) => num.toString().replace(/[^0-9]/g, '')
   const handleStartAmount = (e) => {
-    if (isNaN(e.target.value)) {
-      setError(amount.startAmount, { message: 'Số tiền không hợp lệ' })
-    } else {
-      clearErrors(amount.startAmount)
-      setStartSalary(e.target.value)
-      setCheckBox(false)
-    }
+    setStartSalary(addCommas(removeNonNumeric(e.target.value)))
     if (endSalary === '' && e.target.value === '') {
       setCheckBox(true)
     }
   }
+  const trimComma = (num) => num.toString().replace(/.$/, '')
 
   const handleEndAmount = (e) => {
-    if (isNaN(e.target.value)) {
-      setError(amount.endAmount, { message: 'Số tiền không hợp lệ' })
-    } else {
-      clearErrors(amount.endAmount)
-      setEndSalary(e.target.value)
-    }
-    if (parseInt(e.target.value) <= startSalary) {
+    setEndSalary(addCommas(removeNonNumeric(e.target.value)))
+    console.log('start salary: ' + trimComma(endSalary))
+    if (parseInt(trimComma(endSalary)) <= parseInt(trimComma(startSalary))) {
       setError(amount.endAmount, { message: 'Không được ít hơn số tiền ban đầu' })
     } else {
       clearErrors(amount.endAmount)
@@ -131,12 +122,10 @@ const Salary = ({ handleClick }) => {
   }
 
   const handleAmount = (e) => {
-    if (isNaN(e.target.value)) {
-      setError(amount.amount, { message: 'Số tiền không hợp lệ' })
-    } else {
-      setCheckBox(false)
-      clearErrors(amount.amount)
-    }
+    setSalaryAmount(addCommas(removeNonNumeric(e.target.value)))
+    setCheckBox(false)
+    clearErrors(amount.amount)
+
     if (e.target.value === '') setCheckBox(true)
   }
 
@@ -173,6 +162,7 @@ const Salary = ({ handleClick }) => {
                   id="startAmount"
                   register={register}
                   children="VND"
+                  value={startSalary}
                   error={errors.startAmount}
                   onChange={handleStartAmount}
                 ></Input>
@@ -183,6 +173,7 @@ const Salary = ({ handleClick }) => {
                   register={register}
                   error={errors.endAmount}
                   children="VND"
+                  value={endSalary}
                   onChange={handleEndAmount}
                 ></Input>
               </div>
@@ -199,6 +190,7 @@ const Salary = ({ handleClick }) => {
                   register={register}
                   children="VND"
                   onChange={handleAmount}
+                  value={salaryAmount}
                 />
               </div>
               <DropdownInput label="Theo" register={register} listData={salary.times} id="time" />
