@@ -6,6 +6,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: {
+    left: 100px;
+    right: 50px
+  };
   img {
     width: 700px;
   }

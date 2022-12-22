@@ -5,9 +5,34 @@ import clsx from 'clsx'
 import { HeadIcon, MoneyIcon } from '../../assets/icon'
 import { showSalary } from '../../pages/postJob/steps/preview'
 import draftToHtml from 'draftjs-to-html'
-import { convertToRaw } from 'draft-js'
+import { JobAPI } from '../../api/job'
+import { useDispatch, useSelector } from 'react-redux'
+import { disableLoadMore, selectLoadMore } from '../../redux/homeSlice'
+import Animation from '../../components/Animation'
+import noData from '../../assets/animations/noData'
 
-const ListJob = ({ jobs, setJobDetail, jobDetail }) => {
+const NoneData = ({ title = 'Bạn đang ở trang cuối' }) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: '40px',
+      }}
+    >
+      <div style={{ width: '150px' }}>
+        <Animation animationData={noData} />
+      </div>
+      <strong className={{ fontWeight: '800' }}> {title} </strong>
+    </div>
+  )
+}
+
+const ListJob = ({ jobs, setJobDetail, jobDetail, condition, setJobs }) => {
+  const dispatch = useDispatch()
+  const loadMore = useSelector(selectLoadMore)
   const convertTime = (time) => {
     const createdAt = Date.parse(time)
     const result = Math.abs(new Date() - new Date(createdAt))
@@ -26,31 +51,63 @@ const ListJob = ({ jobs, setJobDetail, jobDetail }) => {
   const handleClick = (job) => {
     setJobDetail(job)
   }
+  const handleLoadMore = () => {
+    const params = {
+      offset: jobs.length,
+      jobName: condition.jobName,
+      location: condition.location,
+    }
+    JobAPI.loadMoreJob(params).then((response) => {
+      if (response.data.length > 0) {
+        console.log(response.data)
+        for (const data of response.data) {
+          setJobs((oldJobs) => [...oldJobs, data])
+        }
+      } else {
+        setJobs((oldJobs) => [...oldJobs, 'none'])
+        dispatch(disableLoadMore())
+      }
+    })
+  }
   return (
     <div className={style.listJob}>
       {jobs.map((job, index) => (
-        <div
-          key={job._id}
-          className={clsx(style.job, {
-            [style.job__active]: jobDetail?._id === job?._id,
-          })}
-          onClick={() => handleClick(job)}
-        >
-          <h2>{job.jobName}</h2>
-          <p>{job.companyName}</p>
-          <p>{job.location}</p>
+        <>
+          {job === 'none' ? (
+            <NoneData />
+          ) : (
+            <div
+              key={job._id}
+              className={clsx(style.job, {
+                [style.job__active]: jobDetail?._id === job?._id,
+              })}
+              onClick={() => handleClick(job)}
+            >
+              <h2>{job.jobName}</h2>
+              <p>{job.companyName}</p>
+              <p>{job.location}</p>
 
-          {job.salary !== null ? (
-            <div className={style.job__salary} style={{ display: 'flex' }}>
-              <MoneyIcon />
-              {showSalary(job.salary)}
+              {job.salary !== null ? (
+                <div className={style.job__salary} style={{ display: 'flex' }}>
+                  <MoneyIcon />
+                  {showSalary(job.salary)}
+                </div>
+              ) : null}
+
+              <div className={style.posted}>{convertTime(job.createdAt)}</div>
             </div>
-          ) : null}
-
-          <div className={style.posted}>{convertTime(job.createdAt)}</div>
-        </div>
+          )}
+        </>
       ))}
-      <button className={style.moreBtn}>Hiển thị thêm việc làm</button>
+
+      <button
+        className={clsx(style.moreBtn, {
+          [style.btnDisable]: !loadMore,
+        })}
+        onClick={loadMore ? handleLoadMore : () => console.log('disableLoadMore')}
+      >
+        Hiển thị thêm việc làm
+      </button>
     </div>
   )
 }
@@ -58,7 +115,7 @@ const ListJob = ({ jobs, setJobDetail, jobDetail }) => {
 const JobDetail = ({ jobDetail }) => {
   const data = JSON.parse(jobDetail.jobDescription)
   const marked = draftToHtml(data)
-  console.log(marked)
+
   return (
     <div className={style.jobDetail}>
       <div className={style.jobDetail__header}>
@@ -85,18 +142,44 @@ const JobDetail = ({ jobDetail }) => {
 
       <div className={style.jobDetail__body}>
         <div dangerouslySetInnerHTML={{ __html: marked }}></div>
+        <div className={style.jobDetail__body__insights}>
+          <h2>Thông tin tuyển dụng</h2>
+          <ul>
+            <li>
+              Cần tuyển dụng{' '}
+              {jobDetail.jobDetail.amountOfJob === '999' ? (
+                <span>liên tục</span>
+              ) : (
+                <span>{jobDetail.jobDetail.amountOfJob} người</span>
+              )}{' '}
+              cho vị trí này
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   )
 }
 
-const Jobs = ({ jobs }) => {
+const Jobs = ({ jobs, condition, setJobs }) => {
   const [jobDetail, setJobDetail] = useState(jobs[0])
-  console.log(jobDetail)
+
   return (
     <div className={style.container}>
-      <ListJob jobs={jobs} setJobDetail={setJobDetail} jobDetail={jobDetail} />
-      {jobDetail && <JobDetail jobDetail={jobDetail} />}
+      {jobs.length !== 0 ? (
+        <>
+          <ListJob
+            jobs={jobs}
+            setJobs={setJobs}
+            setJobDetail={setJobDetail}
+            jobDetail={jobDetail}
+            condition={condition}
+          />
+          {jobDetail && <JobDetail jobDetail={jobDetail} />}
+        </>
+      ) : (
+        <NoneData title={'Không tìm thấy việc làm '} />
+      )}
     </div>
   )
 }

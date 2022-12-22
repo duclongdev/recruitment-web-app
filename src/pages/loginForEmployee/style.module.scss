@@ -1,4 +1,9 @@
 @import '../../sass/color';
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .loginForEmploy {
   display: flex;
   padding: {
@@ -72,5 +77,17 @@
   &__btn {
     width: 200px;
     margin-left: 20px;
+  }
+}
+
+.bottom {
+  margin-top: 50px;
+  background-color: white;
+  ul {
+    list-style-type: none;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
   }
 }

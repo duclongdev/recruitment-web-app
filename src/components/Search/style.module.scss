@@ -18,7 +18,7 @@
   }
 
   &:focus-within {
-    border: 1px green solid;
+    box-shadow: 0 0 0 0.25rem rgba(38, 234, 67, 0.25);
   }
   border-radius: 7px;
   -webkit-border-radius: 7px;
