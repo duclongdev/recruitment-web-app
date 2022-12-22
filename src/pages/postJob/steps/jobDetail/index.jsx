@@ -72,7 +72,7 @@ const validationSchema = yup.object({
 
 const JobDetail = ({ handleClick }) => {
   const { postData, setPostData } = postStepContext()
-
+  console.log(postData)
   const {
     register,
     handleSubmit,

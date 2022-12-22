@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../../../../components/Button'
 import Input from '../../../../components/Input'
 import style from './style.module.scss'
@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { postStepContext } from '../../../../utils/MultiFormProvider'
+import locationData from '../../../../assets/mockData/location.json'
 
 const validationSchema = yup.object({
   jobName: yup.string().required('Vui lòng điền tên công việc'),
@@ -36,7 +37,11 @@ export const BtnControl = ({ handleClick, handlePreview, showPreview, final }) =
           />
         )}
 
-        <Button title={final ? "Hoàn thành" : "Lưu và tiếp tục"} className={style.next} type="submit" />
+        <Button
+          title={final ? 'Hoàn thành' : 'Lưu và tiếp tục'}
+          className={style.next}
+          type="submit"
+        />
       </div>
     </div>
   )
@@ -54,7 +59,9 @@ export const InputContainer = ({ children, className }) => {
 }
 const Job = ({ handleClick }) => {
   const { postData, setPostData } = postStepContext()
-
+  const [suggestion, setSuggestion] = useState(
+    postData.jobBasic?.location ? postData.jobBasic?.location : ''
+  )
   const {
     register,
     handleSubmit,
@@ -70,10 +77,14 @@ const Job = ({ handleClick }) => {
   })
 
   const onSubmit = (data) => {
-    const jobBasic = data
+    const jobBasic = {
+      jobName: data.jobName,
+      location: suggestion,
+    }
     setPostData({ ...postData, jobBasic })
     handleClick('next')
   }
+
   return (
     <div>
       <HeaderPostJob title="Cung cấp một vài thông tin cơ bản" path={'assets/imgJob.svg'} />
@@ -93,8 +104,30 @@ const Job = ({ handleClick }) => {
             id="location"
             register={register}
             required
+            onChange={(e) => setSuggestion(e.target.value)}
+            value={suggestion}
             error={errors.location}
           />
+          <div className={style.suggestion}>
+            <div className={style.suggestion__container}>
+              {locationData
+                .filter((item) => {
+                  const suggestItem = suggestion.toLowerCase()
+                  const locationItem = item.name.toLowerCase()
+                  return (
+                    suggestItem &&
+                    locationItem.startsWith(suggestItem) &&
+                    locationItem != suggestItem
+                  )
+                })
+    
+                .map((item) => (
+                  <div onClick={() => setSuggestion(item.name)} className={style.suggestion__item}>
+                    {item.name}
+                  </div>
+                ))}
+            </div>
+          </div>
         </InputContainer>
         <BtnControl handleClick={handleClick} isValid={isValid} />
       </form>
