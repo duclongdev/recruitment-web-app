@@ -62,12 +62,16 @@ const Home = () => {
     })
   }
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
+  const setItemInInputSearch = (name, value) => {
     setToSearch((prevState) => ({
       ...prevState,
       [name]: value,
     }))
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setItemInInputSearch(name, value)
   }
   return (
     <>
@@ -75,16 +79,18 @@ const Home = () => {
         <div style={{ height: '50px' }}></div>
         <form className={style.search}>
           <Search
-            type={'search'}
+            type={'jobName'}
             name={'jobName'}
             value={toSearch.jobName}
             onChange={handleInputChange}
+            onClick={setItemInInputSearch}
           />
           <Search
             type={'location'}
             name={'location'}
             value={toSearch.location}
             onChange={handleInputChange}
+            onClick={setItemInInputSearch}
           />
           <div>
             <Button title={'Tìm kiếm'} onClick={onSubmit} />

@@ -65,7 +65,7 @@ const Header = () => {
         <img src={logo} alt="logo.png" className={style.header__logo} />
         <>
           <ItemHeader path="/" title="Tìm việc" />
-          <ItemHeader path="/review-company" title="Đánh giá công ty" />
+          <ItemHeader path="/review-company" title="Logout" />
           {user?.role !== 'EMPLOYEE' && <ItemHeader path="/manage-post" title="Quản lý bài đăng" />}
         </>
       </div>
