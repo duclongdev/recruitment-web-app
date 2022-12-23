@@ -3,7 +3,7 @@ import { UserAuth } from '../../utils/UserProvider'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../../redux/usrSlice'
 import { useDispatch } from 'react-redux'
-
+import style from './review-company.module.scss'
 const ReviewCompany = () => {
   const { logOut, user } = UserAuth()
   const dispatch = useDispatch()
@@ -17,12 +17,7 @@ const ReviewCompany = () => {
       console.log(error)
     }
   }
-  return (
-    <div>
-      <button onClick={handleSignOut}>log out</button>
-      User
-    </div>
-  )
+  return <div className={style.review_container}>User</div>
 }
 
 export default ReviewCompany

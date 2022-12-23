@@ -80,7 +80,7 @@ const Login = ({ type }) => {
   }, [user])
   return (
     <div>
-      <p style={{ fontSize: '20px', padding: '20px 50px', position: 'relative' }}>
+      <p style={{ fontSize: '20px', padding: '20px 50px', position: 'relative', display: 'flex', alignItems: 'center' }}>
         <span>Chào mừng đến với </span>
         <img src={logo} alt="" style={{ height: '20px', marginLeft: '5px' }} />
         {type === 'em' ? <span className={style.note}> Tuyển dụng</span> : null}

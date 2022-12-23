@@ -1,0 +1,34 @@
+.footer_container{
+    max-height: 180px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: 1px solid rgb(228, 226, 224);
+
+    .footer_grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 20%;
+        text-align: center;
+        padding: 10px;
+        li{
+            list-style: none;
+
+            a{
+                color: gray;
+                cursor: pointer;
+                text-decoration: none;
+
+                &:hover{
+                    color: rgb(8, 169, 8);
+                }
+            }
+        }
+    }
+
+    .cv_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
