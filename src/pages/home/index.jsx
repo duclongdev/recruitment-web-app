@@ -4,8 +4,11 @@ import { Search, Button, OtherOpt, OptionShow, Jobs, History } from '../../compo
 import clsx from 'clsx'
 import { JobAPI } from '../../api/job'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { enableLoadMore } from '../../redux/homeSlice'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { selectToastMessage, closeToastMessage } from '../../redux/modalSlice'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -15,6 +18,20 @@ const Home = () => {
   const [jobs, setJobs] = useState([])
   const [toSearch, setToSearch] = useState({ jobName: '', location: '' })
   const [historySearch, setHistorySearch] = useState([])
+  const toastMess = useSelector(selectToastMessage)
+  if (toastMess === true) {
+    toast.success('Ứng tuyển thành công, đợi nhà tuyển dụng phản hồi', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    })
+    dispatch(closeToastMessage())
+  }
 
   const isChoose = (check) => {
     if (job === true && check === false) {
@@ -75,6 +92,7 @@ const Home = () => {
   }
   return (
     <>
+      <ToastContainer />
       <div>
         <div style={{ height: '50px' }}></div>
         <form className={style.search}>

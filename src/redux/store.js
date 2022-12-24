@@ -3,6 +3,7 @@ import counterReducer from './counterSlice'
 import userReducer from './usrSlice'
 import modalSlice from './modalSlice'
 import homeSlice from './homeSlice'
+import jobSlice from './jobSlice'
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     user: userReducer,
     modal: modalSlice,
     home: homeSlice,
+    job: jobSlice,
   },
 })

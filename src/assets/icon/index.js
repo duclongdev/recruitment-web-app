@@ -8,6 +8,7 @@ import BoldIcon from './Bold'
 import ItalicIcon from './Italic'
 import UnOrderListIcon from './UnOrderList'
 import MoneyIcon from './Money'
+import CloseIcon from './Close'
 export {
   CheckedIcon,
   SearchIcon,
@@ -18,5 +19,6 @@ export {
   BoldIcon,
   ItalicIcon,
   UnOrderListIcon,
-  MoneyIcon
+  MoneyIcon,
+  CloseIcon,
 }

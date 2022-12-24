@@ -8,6 +8,8 @@ import draftToHtml from 'draftjs-to-html'
 import { JobAPI } from '../../api/job'
 import { useDispatch, useSelector } from 'react-redux'
 import { disableLoadMore, selectLoadMore } from '../../redux/homeSlice'
+import { setJobToShowModal } from '../../redux/jobSlice'
+import { openApplyModal, selectApplyModal } from '../../redux/modalSlice'
 import Animation from '../../components/Animation'
 import noData from '../../assets/animations/noData'
 
@@ -113,9 +115,13 @@ const ListJob = ({ jobs, setJobDetail, jobDetail, condition, setJobs }) => {
 }
 
 const JobDetail = ({ jobDetail }) => {
+  const dispatch = useDispatch()
   const data = JSON.parse(jobDetail.jobDescription)
   const marked = draftToHtml(data)
-
+  const handleToApply = () => {
+    dispatch(setJobToShowModal(jobDetail))
+    dispatch(openApplyModal())
+  }
   return (
     <div className={style.jobDetail}>
       <div className={style.jobDetail__header}>
@@ -126,7 +132,7 @@ const JobDetail = ({ jobDetail }) => {
           Địa điểm: {jobDetail.location}
         </p>
         <div className={style.jobDetail__header__buttonContainer}>
-          <Button title={'Ứng tuyển ngay'} />
+          <Button title={'Ứng tuyển ngay'} onClick={handleToApply} />
           <button
             style={{
               marginLeft: '20px',
