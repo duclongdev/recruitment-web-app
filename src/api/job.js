@@ -19,6 +19,15 @@ const getJobs = () => {
   })
 }
 
+const getAllJobs = () => {
+  return new Promise((resolve, reject) => {
+    base
+      .get('/job/all')
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+}
+
 const searchJobs = (data) => {
   return new Promise((resolve, reject) => {
     base
@@ -47,4 +56,5 @@ export const JobAPI = {
   getJobs: getJobs,
   searchJobs: searchJobs,
   loadMoreJob: loadMoreJob,
+  getAllJobs,
 }
