@@ -1,0 +1,61 @@
+@import '../../../sass/color';
+.userJob {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+}
+.header {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px $grey solid;
+  margin-bottom: 5px;
+}
+.body {
+  flex: 6;
+}
+
+.item {
+  padding: 20px 20px 0px 20px;
+  font-size: 1.25rem;
+  height: 4.5rem;
+  cursor: pointer;
+  span {
+    background-color: $grey;
+    padding: 2px;
+    margin-left: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+  }
+}
+
+.focus {
+  border-bottom: 2px $main solid;
+  font-weight: 700;
+}
+
+.noneData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__description {
+    font-weight: 700;
+  }
+  img {
+    margin-top: 20px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+.findJob {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  color: $main;
+}

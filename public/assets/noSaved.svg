@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 115 79" aria-hidden="true"
+    data-testid="ipl-illustration-spot">
+    <defs>
+        <filter id="spot-bookmark-1_svg__a" x="0%" y="0%">
+            <feTurbulence baseFrequency="2.5" numOctaves="4" result="noise" seed="14"></feTurbulence>
+            <feComponentTransfer in="noise" result="opacity">
+                <feFuncA slope="0.6" type="linear"></feFuncA>
+            </feComponentTransfer>
+            <feBlend in="opacity" in2="SourceGraphic" mode="overlay" result="blend"></feBlend>
+        </filter>
+        <filter id="spot-bookmark-1_svg__c" width="73.632" height="51.958" x="22.373" y="26.569"
+            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="shape" result="effect1_innerShadow_4384_8747"></feBlend>
+        </filter>
+        <filter id="spot-bookmark-1_svg__d" width="15.263" height="38.895" x="73.691" y="26.569"
+            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="1" dy="1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5"></feGaussianBlur>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="shape" result="effect1_innerShadow_4384_8747"></feBlend>
+        </filter>
+        <filter id="spot-bookmark-1_svg__f" width="74.132" height="12.047" x="22.373" y="15.522"
+            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4384_8747"></feBlend>
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow_4384_8747" result="shape"></feBlend>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="1" dy="1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5"></feGaussianBlur>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="shape" result="effect2_innerShadow_4384_8747"></feBlend>
+        </filter>
+        <linearGradient id="spot-bookmark-1_svg__e" x1="81.878" x2="106.063" y1="62.194" y2="45.108"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9D2B6B"></stop>
+            <stop offset="1" stop-color="#E867A8"></stop>
+        </linearGradient>
+        <linearGradient id="spot-bookmark-1_svg__g" x1="59.415" x2="59.624" y1="15.065" y2="27.75"
+            gradientUnits="userSpaceOnUse">
+            <stop stop-color="#237EA3"></stop>
+            <stop offset="1" stop-color="#1D465C"></stop>
+        </linearGradient>
+        <clipPath id="spot-bookmark-1_svg__b">
+            <path xmlns="http://www.w3.org/2000/svg" fill="#fff"
+                d="M105.512 0L53.757 15.521H22.373v9.412L7.831 29.295 0 78.026h114.383L105.512 0z"></path>
+        </clipPath>
+        <pattern id="spot-bookmark-1_svg__h" width="50" height="40" x="0" y="0"
+            patternTransform="scale(.3)" patternUnits="userSpaceOnUse">
+            <path d="M0 0h50v40H0z" filter="url(#spot-bookmark-1_svg__a)"></path>
+        </pattern>
+    </defs>
+    <g clip-path="url(#spot-bookmark-1_svg__b)">
+        <path fill="#F7C8B8" d="M7.83 29.295L105.513 0l8.871 78.026H0l7.83-48.731z"></path>
+        <g filter="url(#spot-bookmark-1_svg__c)">
+            <path fill="#fff" d="M22.373 26.569h73.132v51.458H22.373z"></path>
+        </g>
+        <path fill="#1F5F7B"
+            d="M28.666 39.992H59.01v3.077H28.666v-3.077zm0 12.866h20.276v3.076H28.666v-3.076zm17.619-6.434H28.666V49.5h17.619v-3.076z"></path>
+        <g filter="url(#spot-bookmark-1_svg__d)">
+            <path fill="url(#spot-bookmark-1_svg__e)"
+                d="M73.691 26.569v37.894l7.24-7.97 7.023 6.222-.69-36.147H73.691z"></path>
+        </g>
+        <g filter="url(#spot-bookmark-1_svg__f)">
+            <path fill="url(#spot-bookmark-1_svg__g)"
+                d="M22.373 15.522h73.132v11.046H22.373V15.522z"></path>
+        </g>
+        <path fill="#B6D7EE"
+            d="M32.817 21.093a2.076 2.076 0 11-4.15 0 2.076 2.076 0 014.15 0zm6.804 0a2.076 2.076 0 11-4.151 0 2.076 2.076 0 014.151 0zm4.729 2.077a2.076 2.076 0 100-4.152 2.076 2.076 0 000 4.151z"></path>
+    </g>
+    <rect clip-path="url(#spot-bookmark-1_svg__b)" width="100%" height="100%"
+        fill="url(#spot-bookmark-1_svg__h)" style="mix-blend-mode: overlay;"></rect>
+</svg>

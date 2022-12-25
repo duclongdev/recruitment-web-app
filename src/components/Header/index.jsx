@@ -39,6 +39,9 @@ const items = [
   },
 ]
 
+import { ProfileOutlined, SettingOutlined, HeartOutlined, LogoutOutlined } from '@ant-design/icons'
+import { logout } from '../../redux/usrSlice'
+import { UserAuth } from '../../utils/UserProvider'
 const ItemHeader = ({ path, title }) => {
   const navigator = useNavigate()
   const location = useLocation()
@@ -59,6 +62,59 @@ const ItemHeader = ({ path, title }) => {
 
 const Header = () => {
   const user = useSelector((state) => state.user.value)
+  const { logOut } = UserAuth()
+  const dispatch = useDispatch()
+  const items = [
+    {
+      label: (
+        <a
+          style={{ textDecoration: 'none' }}
+          href={`${user?.role == 'USER' ? '/user' : '/employee'}`}
+        >
+          Hồ sơ
+        </a>
+      ),
+      icon: <ProfileOutlined style={{ marginTop: '1px' }} />,
+    },
+    {
+      label: (
+        <a style={{ textDecoration: 'none' }} href="https://www.aliyun.com">
+          Việc làm của tôi
+        </a>
+      ),
+      icon: <HeartOutlined />,
+    },
+    {
+      label: (
+        <a style={{ textDecoration: 'none' }} href="https://www.luohanacademy.com">
+          Cài đặt
+        </a>
+      ),
+      icon: <SettingOutlined />,
+    },
+    {
+      label: (
+        <a
+          style={{ textDecoration: 'none' }}
+          onClick={async () => {
+            if (window.confirm('Bạn chắc chắn muốn đăng xuất') === true) {
+              try {
+                await logOut()
+                dispatch(logout())
+                navigate('/')
+              } catch (error) {
+                console.log(error)
+              }
+            }
+          }}
+        >
+          Đăng xuất
+        </a>
+      ),
+      icon: <LogoutOutlined />,
+    },
+  ]
+
   return (
     <div className={style.header}>
       <div className={style.header__right}>
