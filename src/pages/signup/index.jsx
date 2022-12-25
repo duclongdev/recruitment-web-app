@@ -11,6 +11,7 @@ import { login } from '../../redux/usrSlice'
 import { useDispatch } from 'react-redux'
 import { RegExp } from '../../utils/regexExpression'
 import style from './style.module.scss'
+import Animation from '../../components/Animation'
 
 const validationSchema = yup.object({
   fullName: yup.string().required(errorMessages.required.fullName),
@@ -56,7 +57,7 @@ const Signup = () => {
   return (
     <div className={style.container}>
       <div className={style.other}>
-        <img src="assets/loginbg.jpg" alt="" />
+        <Animation />
       </div>
       <div className={style.signIn}>
         <form onSubmit={handleSubmit(onSubmit)} className={style.form}>

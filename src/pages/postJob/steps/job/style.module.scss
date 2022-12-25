@@ -64,3 +64,34 @@
     background-color: rgb(218, 247, 226);
   }
 }
+
+.suggestion {
+  position: relative;
+  top: -10px;
+  &__container {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+  }
+
+  &__item {
+    padding: 10px;
+    border: 1px $grey solid;
+    &:hover {
+      background-color: $grey;
+    }
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  }
+}

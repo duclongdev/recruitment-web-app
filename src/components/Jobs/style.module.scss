@@ -88,7 +88,7 @@
     margin-bottom: 0;
     padding-top: 1rem !important;
     font-size: 0.85rem;
-    p{
+    p {
       font-size: 0.85rem;
     }
   }
@@ -132,4 +132,9 @@ h3 {
 .job__active {
   border: 2px $main solid;
   background-color: rgb(218, 244, 224);
+}
+
+.btnDisable {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

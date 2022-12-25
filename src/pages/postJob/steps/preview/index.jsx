@@ -67,16 +67,16 @@ export const showSalary = (salary) => {
   }
   return (
     <span>
-      {salary.salaryType === 'range' ? (
+      {salary?.salaryType === 'range' ? (
         <span>
-          {salary.startAmount}₫ - {salary.endAmount}₫
+          {salary?.startAmount}₫ - {salary?.endAmount}₫
         </span>
       ) : (
         <span>
-          {getType(salary.salaryType)} {salary.amount}₫{' '}
+          {getType(salary?.salaryType)} {salary?.amount}₫{' '}
         </span>
       )}{' '}
-      <span>{getTime(salary.time)}</span>
+      <span>{getTime(salary?.time)}</span>
     </span>
   )
 }

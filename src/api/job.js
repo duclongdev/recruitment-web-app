@@ -19,11 +19,25 @@ const getJobs = () => {
   })
 }
 
-const getJobsByID = () => {
+const searchJobs = (data) => {
   return new Promise((resolve, reject) => {
     base
-      .get('/')
-      .then((res) => resolve(res))
+      .get('/job/search', {
+        params: { jobName: data.jobName, location: data.location },
+      })
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+}
+
+const loadMoreJob = (condition) => {
+  const { offset, jobName, location } = condition
+  return new Promise((resolve, reject) => {
+    base
+      .get('/job/loadMore', {
+        params: { offset, jobName, location },
+      })
+      .then((response) => resolve(response))
       .catch((error) => reject(error))
   })
 }
@@ -31,5 +45,6 @@ const getJobsByID = () => {
 export const JobAPI = {
   postJob: postJob,
   getJobs: getJobs,
-  getJobsByID,
+  searchJobs: searchJobs,
+  loadMoreJob: loadMoreJob,
 }

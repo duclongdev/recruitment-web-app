@@ -16,6 +16,7 @@ import errorMessages from '../../utils/errorMessage.json'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/usrSlice'
 import { ApiError } from '../../error/apiError'
+import Footer from '../../components/Footer'
 
 const validationSchema = yup.object({
   email: yup
@@ -170,6 +171,7 @@ const Login = ({ type }) => {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

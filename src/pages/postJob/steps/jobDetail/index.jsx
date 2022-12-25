@@ -41,16 +41,29 @@ export const DropdownInput = ({ register, error, label, id, listData, onChange, 
           [style.fieldValid]: !error,
         })}
       >
-        <select id={id} {...register(id)} onChange={onChange}>
-          {listData.map((item, index) => {
-            return (
-              <option value={item.value} key={index}>
-                {item.label}
-              </option>
-            )
-          })}
-        </select>
-
+        {onChange ? (
+          <select id={id} {...register(id)} onChange={onChange} defaultValue={''}>
+            <option value="" disabled hidden />
+            {listData.map((item, index) => {
+              return (
+                <option value={item.value} key={index}>
+                  {item.label}
+                </option>
+              )
+            })}
+          </select>
+        ) : (
+          <select id={id} {...register(id)} defaultValue={''}>
+            <option value="" disabled hidden />
+            {listData.map((item, index) => {
+              return (
+                <option value={item.value} key={index}>
+                  {item.label}
+                </option>
+              )
+            })}
+          </select>
+        )}
         <DownArrowIcon className={style.arrowIcon} />
       </div>
 
@@ -72,7 +85,7 @@ const validationSchema = yup.object({
 
 const JobDetail = ({ handleClick }) => {
   const { postData, setPostData } = postStepContext()
-
+  console.log(postData)
   const {
     register,
     handleSubmit,
