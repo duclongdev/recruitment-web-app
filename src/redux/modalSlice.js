@@ -4,7 +4,7 @@ const initialState = {
   value: false,
   dataFromPostJob: {},
   applyModal: false,
-  toastMessage: true,
+  toastMessage: false,
 }
 
 export const modalSlice = createSlice({

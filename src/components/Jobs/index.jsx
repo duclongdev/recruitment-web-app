@@ -13,9 +13,10 @@ import { openApplyModal, selectApplyModal } from '../../redux/modalSlice'
 import Animation from '../../components/Animation'
 import noData from '../../assets/animations/noData'
 
-const NoneData = ({ title = 'Bạn đang ở trang cuối' }) => {
+const NoneData = ({ title = 'Bạn đang ở trang cuối', key }) => {
   return (
     <div
+      key={key}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -76,7 +77,7 @@ const ListJob = ({ jobs, setJobDetail, jobDetail, condition, setJobs }) => {
       {jobs.map((job, index) => (
         <>
           {job === 'none' ? (
-            <NoneData />
+            <NoneData key={index} />
           ) : (
             <div
               key={job._id}

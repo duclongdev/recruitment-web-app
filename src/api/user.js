@@ -30,8 +30,22 @@ const applyJob = (data) => {
       .catch((error) => reject(error))
   })
 }
+
+const update = (data) => {
+  const { userId, userInfo } = data
+  return new Promise((resolve, reject) => {
+    base
+      .put(`/user/${userId}`, {
+        ...userInfo,
+      })
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+}
+
 export const userAPI = {
   login: login,
   signin: signin,
   applyJob: applyJob,
+  update: update,
 }
