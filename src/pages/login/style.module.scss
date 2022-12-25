@@ -2,6 +2,7 @@
 .login {
   display: flex;
   padding: 0px 150px;
+  margin-bottom: 10px;
   &__form {
     flex: 3;
     &__item {
@@ -100,8 +101,7 @@
 }
 
 .note {
-  position: relative;
-  top: -10px;
+  margin-left: 10px;
   font-size: 14px;
 }
 

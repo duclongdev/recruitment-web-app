@@ -4,40 +4,10 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Button, Dropdown, Space } from 'antd'
-import { ProfileOutlined, SettingOutlined, HeartOutlined } from '@ant-design/icons'
-
-const items = [
-  {
-    label: (
-      <a style={{ textDecoration: 'none' }} href="/employee">
-        Hồ sơ
-      </a>
-    ),
-    icon: <ProfileOutlined style={{ marginTop: '1px' }} />,
-  },
-  {
-    label: (
-      <a style={{ textDecoration: 'none' }} rel="noopener noreferrer" href="https://www.aliyun.com">
-        Việc làm của tôi
-      </a>
-    ),
-    icon: <HeartOutlined />,
-  },
-  {
-    label: (
-      <a
-        style={{ textDecoration: 'none' }}
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        Cài đặt
-      </a>
-    ),
-    icon: <SettingOutlined />,
-  },
-]
+import { ProfileOutlined, SettingOutlined, HeartOutlined, LogoutOutlined } from '@ant-design/icons'
+import { logout } from '../../redux/usrSlice'
 
 const ItemHeader = ({ path, title }) => {
   const navigator = useNavigate()
@@ -59,12 +29,64 @@ const ItemHeader = ({ path, title }) => {
 
 const Header = () => {
   const user = useSelector((state) => state.user.value)
+  const dispatch = useDispatch()
+  const items = [
+    {
+      label: (
+        <a
+          style={{ textDecoration: 'none' }}
+          href={`${user?.role == 'USER' ? '/user' : '/employee'}`}
+        >
+          Hồ sơ
+        </a>
+      ),
+      icon: <ProfileOutlined style={{ marginTop: '1px' }} />,
+    },
+    {
+      label: (
+        <a style={{ textDecoration: 'none' }} href="https://www.aliyun.com">
+          Việc làm của tôi
+        </a>
+      ),
+      icon: <HeartOutlined />,
+    },
+    {
+      label: (
+        <a style={{ textDecoration: 'none' }} href="https://www.luohanacademy.com">
+          Cài đặt
+        </a>
+      ),
+      icon: <SettingOutlined />,
+    },
+    {
+      label: (
+        <a
+          style={{ textDecoration: 'none' }}
+          onClick={() => {
+            dispatch(logout())
+          }}
+        >
+          Đăng xuất
+        </a>
+      ),
+      icon: <LogoutOutlined />,
+    },
+  ]
+
   return (
     <div className={style.header}>
       <div className={style.header__right}>
-        <img src={logo} alt="logo.png" className={style.header__logo} />
+        <a href="/">
+          <img src={logo} alt="logo.png" className={style.header__logo} />
+        </a>
         <>
           <ItemHeader path="/" title="Tìm việc" />
+          <ItemHeader path="/review-company" title="Đánh giá công ty" />
+          <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
+          <ItemHeader path="/apply" title="Công việc đã ứng tuyển" />
+          {user?.position == 'Admin' && (
+            <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+          )}
         </>
       </div>
       <div className={style.header__right}>
@@ -87,7 +109,20 @@ const Header = () => {
           </>
         ) : user?.role === 'USER' ? (
           <>
-            <ItemHeader path="/user" title={<span>{user.name}</span>} />
+            <ItemHeader path="/post-job" title="Đăng bài" />
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottomRight"
+              arrow={{
+                pointAtCenter: true,
+              }}
+            >
+              <div className={clsx(style.header__item)}>
+                <span>{user.name}</span>
+              </div>
+            </Dropdown>
           </>
         ) : (
           <>

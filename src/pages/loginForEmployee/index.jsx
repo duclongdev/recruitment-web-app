@@ -36,7 +36,7 @@ const LoginForEmployee = () => {
           <SignIn />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
