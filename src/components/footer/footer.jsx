@@ -19,7 +19,7 @@ const Footer = () => {
         </li>
       </div>
       <div className={style.cv_container}>
-        <h3 style={{ fontSize: '20px' }}>Dễ dàng ứng tuyển việc làm</h3>
+        <h3 style={{ fontSize: '18px' }}>Dễ dàng ứng tuyển việc làm</h3>
         <Button type="primary" size="large">
           Tạo CV của bạn
         </Button>

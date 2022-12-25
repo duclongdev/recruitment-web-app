@@ -10,6 +10,9 @@ import CreateCV from '../pages/createCV'
 import Employee from '../pages/employee'
 import PostJob from '../pages/postJob'
 import Signup from '../pages/signup'
+import ManagePost from '../pages/managePost/managePost'
+import Apply from '../pages/apply/apply'
+import ManagePostAdmin from '../pages/managePostAdmin/managePostAdmin'
 
 const publicRoutes = [
   { path: '/', component: Home },
@@ -25,5 +28,8 @@ const publicRoutes = [
   { path: '/search', component: Search },
   { path: '/detail', component: Detail },
   { path: '/favorite', component: Favorite, layout: null },
+  { path: '/manage-post', component: ManagePost },
+  { path: '/apply', component: Apply },
+  { path: '/manage-post-admin', component: ManagePostAdmin },
 ]
 export { publicRoutes }

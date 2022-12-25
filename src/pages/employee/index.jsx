@@ -1,13 +1,17 @@
-import React from 'react'
+import { Button, Card, Col, Form, Input, Row } from 'antd'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import { Card, Col, Form, Input, Row, Button } from 'antd'
+import { EmployeeAPI } from '../../api/employee'
 
 const Employee = () => {
   const user = useSelector((state) => state.user.value)
+  const [info, setInfo] = useState()
   const dispatch = useDispatch()
 
-  console.log(user)
+  const handleSave = async (value) => {
+    await EmployeeAPI.updateProfile(user._id, value)
+  }
+
   return (
     <div>
       <Card
@@ -28,10 +32,11 @@ const Employee = () => {
           layout="horizontal"
           size="large"
           style={{ margin: 'auto' }}
+          onFinish={handleSave}
         >
           <Form.Item
             label="Họ tên"
-            name="name"
+            name="fullName"
             rules={[
               {
                 required: true,
@@ -40,9 +45,6 @@ const Employee = () => {
             ]}
             initialValue={user.fullName}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item name="position" label="Vị trí" initialValue={user.position}>
             <Input />
           </Form.Item>
           <Form.Item
@@ -95,7 +97,9 @@ const Employee = () => {
 
           <Row>
             <Col span={18} style={{ textAlign: 'right' }}>
-              <Button type="primary">Lưu thay đổi</Button>
+              <Button type="primary" htmlType="submit">
+                Lưu thay đổi
+              </Button>
             </Col>
           </Row>
         </Form>

@@ -33,7 +33,10 @@ const Header = () => {
   const items = [
     {
       label: (
-        <a style={{ textDecoration: 'none' }} href={`${user.role == 'USER' ? '/user' : '/employee'}`}>
+        <a
+          style={{ textDecoration: 'none' }}
+          href={`${user?.role == 'USER' ? '/user' : '/employee'}`}
+        >
           Hồ sơ
         </a>
       ),
@@ -49,10 +52,7 @@ const Header = () => {
     },
     {
       label: (
-        <a
-          style={{ textDecoration: 'none' }}
-          href="https://www.luohanacademy.com"
-        >
+        <a style={{ textDecoration: 'none' }} href="https://www.luohanacademy.com">
           Cài đặt
         </a>
       ),
@@ -60,27 +60,33 @@ const Header = () => {
     },
     {
       label: (
-      <a
-        style={{ textDecoration: 'none' }}
-        onClick={()=> {dispatch(logout())}}
-      >
-        Đăng xuất
-      </a>),
-      icon: <LogoutOutlined />
-    }
+        <a
+          style={{ textDecoration: 'none' }}
+          onClick={() => {
+            dispatch(logout())
+          }}
+        >
+          Đăng xuất
+        </a>
+      ),
+      icon: <LogoutOutlined />,
+    },
   ]
 
-  
   return (
     <div className={style.header}>
       <div className={style.header__right}>
-        <a href='/'>
+        <a href="/">
           <img src={logo} alt="logo.png" className={style.header__logo} />
         </a>
         <>
           <ItemHeader path="/" title="Tìm việc" />
           <ItemHeader path="/review-company" title="Đánh giá công ty" />
-          {user?.role !== 'EMPLOYEE' && <ItemHeader path="/manage-post" title="Quản lý bài đăng" />}
+          <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
+          <ItemHeader path="/apply" title="Công việc đã ứng tuyển" />
+          {user?.position == 'Admin' && (
+            <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+          )}
         </>
       </div>
       <div className={style.header__right}>
@@ -102,7 +108,7 @@ const Header = () => {
             </Dropdown>
           </>
         ) : user?.role === 'USER' ? (
-           <>
+          <>
             <ItemHeader path="/post-job" title="Đăng bài" />
             <Dropdown
               menu={{

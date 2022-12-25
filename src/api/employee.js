@@ -21,7 +21,16 @@ const login = (user) => {
   })
 }
 
+const updateProfile = (id, user) => {
+  return new Promise((resolve, reject) => {
+    base
+      .put(`/employee/${id}`, { ...user })
+      .then((res) => resolve(res))
+      .catch((error) => reject(error))
+  })
+}
 export const EmployeeAPI = {
   signIn: signIn,
   login: login,
+  updateProfile,
 }

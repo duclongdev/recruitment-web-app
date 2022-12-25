@@ -19,7 +19,17 @@ const getJobs = () => {
   })
 }
 
+const getJobsByID = () => {
+  return new Promise((resolve, reject) => {
+    base
+      .get('/')
+      .then((res) => resolve(res))
+      .catch((error) => reject(error))
+  })
+}
+
 export const JobAPI = {
   postJob: postJob,
   getJobs: getJobs,
+  getJobsByID,
 }

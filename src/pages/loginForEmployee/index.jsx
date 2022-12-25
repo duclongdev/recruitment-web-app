@@ -23,12 +23,6 @@ const LoginForEmployee = () => {
           <CheckedIcon />
           Thấu hiểu thị trường tuyển dụng ngành IT với những cập nhật mới nhất
         </p>
-        <div className={style.login}>
-          <span>Bạn đã có tài khoản? </span>
-          <div className={style.login__btn}>
-            <Button title="Đăng nhập" onClick={() => console.log('dcm')} />
-          </div>
-        </div>
       </div>
       <div className={style.signIn}>
         <SignIn />
