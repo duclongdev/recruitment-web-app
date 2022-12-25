@@ -2,6 +2,7 @@ import { Button, Card, Col, Form, Input, Row } from 'antd'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { EmployeeAPI } from '../../api/employee'
+import CreateCV from '../createCV'
 
 const Employee = () => {
   const user = useSelector((state) => state.user.value)
@@ -94,14 +95,14 @@ const Employee = () => {
           >
             <Input />
           </Form.Item>
-
-          <Row>
-            <Col span={18} style={{ textAlign: 'right' }}>
-              <Button type="primary" htmlType="submit">
-                Lưu thay đổi
-              </Button>
-            </Col>
-          </Row>
+          <Form.Item label="CV của bạn">
+            <CreateCV />
+          </Form.Item>
+          <Form.Item wrapperCol={{ offset: 5, span: 14 }}>
+            <Button type="primary" htmlType="submit">
+              Lưu thay đổi
+            </Button>
+          </Form.Item>
         </Form>
       </Card>
     </div>
