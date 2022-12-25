@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Button, Dropdown, Space } from 'antd'
-import { ProfileOutlined, SettingOutlined, HeartOutlined } from '@ant-design/icons'
+import { ProfileOutlined, SettingOutlined, HeartOutlined, LogoutOutlined } from '@ant-design/icons'
+import { useDispatch } from 'react-redux'
 
 const items = [
   {
@@ -39,7 +40,6 @@ const items = [
   },
 ]
 
-import { ProfileOutlined, SettingOutlined, HeartOutlined, LogoutOutlined } from '@ant-design/icons'
 import { logout } from '../../redux/usrSlice'
 import { UserAuth } from '../../utils/UserProvider'
 const ItemHeader = ({ path, title }) => {
