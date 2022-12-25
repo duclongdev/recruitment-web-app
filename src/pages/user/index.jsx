@@ -16,6 +16,7 @@ import {
 import UserForm from './userForm'
 import clsx from 'clsx'
 import Email from '../../assets/icon/Email'
+import UserJob from './userJob'
 
 const SideBar = ({ setDisplay, display }) => {
   const { logOut } = UserAuth()
@@ -104,10 +105,6 @@ const InfoUser = () => {
       </div>
     </div>
   )
-}
-
-const UserJob = () => {
-  return <div>Userjob</div>
 }
 
 const Body = ({ display }) => {

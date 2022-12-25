@@ -12,6 +12,8 @@ import { setJobToShowModal } from '../../redux/jobSlice'
 import { openApplyModal, selectApplyModal } from '../../redux/modalSlice'
 import Animation from '../../components/Animation'
 import noData from '../../assets/animations/noData'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const NoneData = ({ title = 'Bạn đang ở trang cuối', key }) => {
   return (
@@ -123,6 +125,21 @@ const JobDetail = ({ jobDetail }) => {
     dispatch(setJobToShowModal(jobDetail))
     dispatch(openApplyModal())
   }
+
+  const saveJob = () => {
+    toast.success('Lưu thành công', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    })
+    console.log('saveJsob')
+  }
+
   return (
     <div className={style.jobDetail}>
       <div className={style.jobDetail__header}>
@@ -135,12 +152,15 @@ const JobDetail = ({ jobDetail }) => {
         <div className={style.jobDetail__header__buttonContainer}>
           <Button title={'Ứng tuyển ngay'} onClick={handleToApply} />
           <button
+            className={style.savedBtn}
             style={{
               marginLeft: '20px',
               borderRadius: '10px',
               border: 'none',
               padding: '10px 20px',
             }}
+            type="button"
+            onClick={saveJob}
           >
             <HeadIcon />
           </button>
