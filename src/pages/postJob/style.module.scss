@@ -1,5 +1,7 @@
 .postJob {
   position: relative;
+  min-height: calc(1000px - 240px - 72px);
+  margin-bottom: 20px;
 }
 
 .stepper {

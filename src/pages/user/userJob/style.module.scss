@@ -59,3 +59,58 @@
   font-weight: 700;
   color: $main;
 }
+
+.job {
+  padding: 20px;
+  border-bottom: 1px $grey solid;
+  display: flex;
+  justify-content: space-between;
+  &__logo {
+    &__container {
+      width: 50px;
+      padding: 10px 12px;
+      background-color: $grey;
+      border-radius: 9999px;
+    }
+  }
+  &__option {
+    display: flex;
+    flex-direction: row;
+  }
+  &__info {
+    margin-left: 20px;
+    width: 700px;
+    cursor: pointer;
+    &__name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding-bottom: 5px;
+    }
+    &__time {
+      padding-top: 5px;
+      color: #6f6f6f;
+      font-size: 0.85rem;
+    }
+    &:hover {
+      &__name {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.close {
+  cursor: pointer;
+  height: fit-content;
+  border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  -ms-border-radius: 200px;
+  -o-border-radius: 200px;
+  &:hover {
+    background-color: $grey;
+  }
+  &:active {
+    background-color: aliceblue;
+  }
+}

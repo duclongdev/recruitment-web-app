@@ -68,6 +68,7 @@ const SideBar = ({ setDisplay, display }) => {
     </div>
   )
 }
+
 const Item = ({ icon, content }) => {
   return (
     <>

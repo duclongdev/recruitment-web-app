@@ -15,6 +15,7 @@ import PencilIcon from './Pencil'
 import EmailIcon from './Email'
 import PhoneIcon from './Phone'
 import UserIcon from './User'
+import LogoIcon from './Logo'
 export {
   CheckedIcon,
   SearchIcon,
@@ -33,4 +34,5 @@ export {
   EmailIcon,
   PhoneIcon,
   UserIcon,
+  LogoIcon,
 }

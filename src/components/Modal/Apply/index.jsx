@@ -13,7 +13,7 @@ import { selectUser } from '../../../redux/usrSlice'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { userAPI } from '../../../api/user'
-import { showToastMessage } from '../../../redux/modalSlice' 
+import { showToastMessage } from '../../../redux/modalSlice'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -66,8 +66,8 @@ const InfoUser = ({ jobId }) => {
       fullName: user.name,
       email: user.email,
       phoneNumber: user?.phoneNumber,
-      address: user.address,
-      education: 'doctorate',
+      address: user?.address,
+      education: user?.education,
     },
   })
   const onSubmit = (data) => {

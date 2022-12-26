@@ -11,7 +11,7 @@ const OtherOpt = () => {
         - Chỉ cần vài giây
       </p>
       <p>
-        <a>
+        <a href="/post-job">
           <strong>Đăng tải công việc</strong>{' '}
         </a>
         - Tuyển dụng nhân viên

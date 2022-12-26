@@ -23,7 +23,7 @@
 }
 .job {
   width: 470px;
-
+  cursor: pointer;
   margin: {
     top: 20px;
     bottom: 20px;
@@ -31,6 +31,10 @@
   padding: 20px;
   -webkit-user-select: none;
   user-select: none;
+  
+  &:hover{
+    border-color: rgb(8, 169, 8)
+  }
 
   @include border-component;
   &__salary {

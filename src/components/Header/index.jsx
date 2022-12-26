@@ -4,44 +4,12 @@ import style from './style.module.scss'
 import clsx from 'clsx'
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Button, Dropdown, Space } from 'antd'
 import { ProfileOutlined, SettingOutlined, HeartOutlined, LogoutOutlined } from '@ant-design/icons'
-import { useDispatch } from 'react-redux'
-
-const items = [
-  {
-    label: (
-      <a style={{ textDecoration: 'none' }} href="/employee">
-        Hồ sơ
-      </a>
-    ),
-    icon: <ProfileOutlined style={{ marginTop: '1px' }} />,
-  },
-  {
-    label: (
-      <a style={{ textDecoration: 'none' }} rel="noopener noreferrer" href="https://www.aliyun.com">
-        Việc làm của tôi
-      </a>
-    ),
-    icon: <HeartOutlined />,
-  },
-  {
-    label: (
-      <a
-        style={{ textDecoration: 'none' }}
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        Cài đặt
-      </a>
-    ),
-    icon: <SettingOutlined />,
-  },
-]
-
 import { logout } from '../../redux/usrSlice'
 import { UserAuth } from '../../utils/UserProvider'
+
 const ItemHeader = ({ path, title }) => {
   const navigator = useNavigate()
   const location = useLocation()
@@ -62,8 +30,8 @@ const ItemHeader = ({ path, title }) => {
 
 const Header = () => {
   const user = useSelector((state) => state.user.value)
-  const { logOut } = UserAuth()
   const dispatch = useDispatch()
+  const { logOut } = UserAuth()
   const items = [
     {
       label: (
@@ -118,9 +86,20 @@ const Header = () => {
   return (
     <div className={style.header}>
       <div className={style.header__right}>
-        <img src={logo} alt="logo.png" className={style.header__logo} />
+        <a href="/">
+          <img src={logo} alt="logo.png" className={style.header__logo} />
+        </a>
         <>
-          <ItemHeader path="/" title="Tìm việc" />
+          {user?.role === 'EMPLOYEE' ? (
+            <>
+              <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
+              {user?.position == 'Admin' && (
+                <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+              )}
+            </>
+          ) : (
+            <ItemHeader path="/" title="Tìm việc" />
+          )}
         </>
       </div>
       <div className={style.header__right}>
