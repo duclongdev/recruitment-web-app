@@ -51,10 +51,21 @@ const loadMoreJob = (condition) => {
   })
 }
 
+const deleteJobById = (id) => {
+  new Promise((resolve, reject) => {
+    base
+      .delete(`/job/${id}`)
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+  return id
+}
+
 export const JobAPI = {
   postJob: postJob,
   getJobs: getJobs,
   searchJobs: searchJobs,
   loadMoreJob: loadMoreJob,
   getAllJobs,
+  deleteJobById,
 }

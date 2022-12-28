@@ -1,13 +1,17 @@
 import { Button, Card, List, Skeleton } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { JobAPI } from '../../api/job'
 import { letterAPI } from '../../api/letter'
+import ModalDetailPost from './modalDetailPost/modalDetailPost'
 const count = 3
 const ManagePost = () => {
   const [initLoading, setInitLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
   const [list, setList] = useState([])
+  const [item, setItem] = useState()
   const user = useSelector((state) => state.user.value)
   useEffect(() => {
     letterAPI.getListLetters(user._id).then((res) => {
@@ -16,6 +20,12 @@ const ManagePost = () => {
       setList(res.data)
     })
   }, [setData])
+
+  const showModal = (item) => {
+    setIsModalOpen(true)
+    setItem(item)
+    console.log(item)
+  }
   const onLoadMore = () => {
     setLoading(true)
     setList(
@@ -55,8 +65,24 @@ const ManagePost = () => {
             <List.Item
               actions={[
                 <a key="list-loadmore-edit">edit</a>,
-                <a key="list-loadmore-more">more</a>,
-                <a key="list-loadmore-delete">delete</a>,
+                <a
+                  key="list-loadmore-more"
+                  onClick={() => {
+                    showModal(item)
+                  }}
+                >
+                  more
+                </a>,
+                <a
+                  key="list-loadmore-delete"
+                  onClick={() => {
+                    JobAPI.deleteJobById(item.job._id).then((res) => {
+                      console.log(res)
+                    })
+                  }}
+                >
+                  delete
+                </a>,
               ]}
             >
               <Skeleton title={false} loading={item.loading} active>
@@ -67,6 +93,7 @@ const ManagePost = () => {
           )}
         />
       </Card>
+      <ModalDetailPost show={isModalOpen} setShow={setIsModalOpen} item={item} />
     </div>
   )
 }

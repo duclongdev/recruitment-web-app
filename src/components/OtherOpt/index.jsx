@@ -5,7 +5,7 @@ const OtherOpt = () => {
   return (
     <div className={style.otherOpt}>
       <p>
-        <a>
+        <a href="/create-cv">
           <strong>Tạo CV</strong>{' '}
         </a>
         - Chỉ cần vài giây
