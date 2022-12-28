@@ -57,6 +57,15 @@ const getAchievedJobByUserId = (userId) => {
   })
 }
 
+const deleteById = (letterId) => {
+  return new Promise((resolve, reject) => {
+    base
+      .delete(`letter/delete/${letterId}`)
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+}
+
 export const letterAPI = {
   applyJobs,
   getListLetters,
@@ -64,4 +73,5 @@ export const letterAPI = {
   getSavedJobByUserId,
   getApplyJobByUserId,
   getAchievedJobByUserId,
+  deleteById,
 }

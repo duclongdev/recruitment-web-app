@@ -31,9 +31,9 @@
   padding: 20px;
   -webkit-user-select: none;
   user-select: none;
-  
-  &:hover{
-    border-color: rgb(8, 169, 8)
+
+  &:hover {
+    border-color: rgb(8, 169, 8);
   }
 
   @include border-component;
@@ -139,12 +139,20 @@ h3 {
   cursor: not-allowed;
 }
 
-.savedBtn{
+.savedBtn {
   cursor: pointer;
-  &:hover{
+  margin-left: 20px;
+  border-radius: 5px;
+  border: 1px;
+  padding: 10px 20px;
+  &:hover {
     background-color: #bdbdbd;
   }
-  &:active{
+  &:active {
     background-color: #a4a3a3;
+  }
+
+  &__saved {
+    background-color: red;
   }
 }

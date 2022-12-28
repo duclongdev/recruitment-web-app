@@ -4,8 +4,14 @@ import SignIn from '../../components/SignIn'
 import { CheckedIcon } from '../../assets/icon'
 import Button from '../../components/Button'
 import Footer from '../../components/Footer'
+import { useNavigate } from 'react-router-dom'
 
 const LoginForEmployee = () => {
+  const navigate = useNavigate()
+  const navigateLogin = () => {
+    navigate('/login-employ', { replace: true })
+  }
+
   return (
     <div className={style.container}>
       <div className={style.loginForEmploy}>
@@ -28,7 +34,7 @@ const LoginForEmployee = () => {
           <div className={style.login}>
             <span>Bạn đã có tài khoản? </span>
             <div className={style.login__btn}>
-              <Button title="Đăng nhập" onClick={() => console.log('dcm')} />
+              <Button title="Đăng nhập" onClick={navigateLogin} />
             </div>
           </div>
         </div>

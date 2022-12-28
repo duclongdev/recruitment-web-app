@@ -16,6 +16,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { letterAPI } from '../../api/letter'
 import { selectUser } from '../../redux/usrSlice'
+import { useNavigate } from 'react-router-dom'
 
 const NoneData = ({ title = 'Bạn đang ở trang cuối', key }) => {
   return (
@@ -120,29 +121,42 @@ const ListJob = ({ jobs, setJobDetail, jobDetail, condition, setJobs }) => {
 }
 
 const JobDetail = ({ jobDetail }) => {
+  const [save, setSave] = useState(false)
+  const navigate = useNavigate()
+  const user = useSelector(selectUser)
   const dispatch = useDispatch()
   const data = JSON.parse(jobDetail.jobDescription)
   const marked = draftToHtml(data)
   const handleToApply = () => {
-    dispatch(setJobToShowModal(jobDetail))
-    dispatch(openApplyModal())
+    console.log(user)
+    if (user?.role === 'USER') {
+      dispatch(setJobToShowModal(jobDetail))
+      dispatch(openApplyModal())
+    } else if (user === null) {
+      navigate('/login')
+    }
   }
-  const user = useSelector(selectUser)
+
   const saveJob = () => {
-    const userId = user._id
-    const jobId = jobDetail._id
-    letterAPI.saveJob(jobId, userId).then(
-      toast.success('Lưu thành công', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      })
-    )
+    if (user?.role === 'USER') {
+      const userId = user._id
+      const jobId = jobDetail._id
+      letterAPI.saveJob(jobId, userId).then(
+        toast.success('Lưu thành công', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'light',
+        })
+      )
+      setSave(true)
+    } else if (user === null) {
+      navigate('/login')
+    }
   }
 
   return (
@@ -157,13 +171,9 @@ const JobDetail = ({ jobDetail }) => {
         <div className={style.jobDetail__header__buttonContainer}>
           <Button title={'Ứng tuyển ngay'} onClick={handleToApply} />
           <button
-            className={style.savedBtn}
-            style={{
-              marginLeft: '20px',
-              borderRadius: '10px',
-              border: 'none',
-              padding: '10px 20px',
-            }}
+            className={clsx(style.savedBtn, {
+
+            })}
             type="button"
             onClick={saveJob}
           >

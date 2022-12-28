@@ -51,7 +51,7 @@ const validationSchema = yup.object({
   experience: yup.string().required('Vui lòng không để trống phần này'),
 })
 
-const InfoUser = ({ jobId }) => {
+const InfoUser = ({ jobId, deleteLetterId }) => {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
   const {
@@ -74,6 +74,7 @@ const InfoUser = ({ jobId }) => {
     const payload = {
       userId: user._id,
       jobId: jobId,
+      deleteLetterId: deleteLetterId,
       infoUser: { ...data, photoURL: user.photoURL },
     }
     userAPI.applyJob(payload)
@@ -166,13 +167,13 @@ const ApplyModal = () => {
   const jobDetail = useSelector(selectJob)
   const data = JSON.parse(jobDetail.jobDescription)
   const marked = draftToHtml(data)
-
+  console.log(jobDetail)
   return (
     <div className={style.container}>
       <div className={style.formInfoUser}>
         <Header />
         <div className={style.formInfoUser__body}>
-          <InfoUser jobId={jobDetail._id} />
+          <InfoUser jobId={jobDetail._id} deleteLetterId={jobDetail.deleteLetterId} />
         </div>
       </div>
       <div className={style.jobDescription}>

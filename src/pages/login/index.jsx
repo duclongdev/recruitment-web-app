@@ -17,6 +17,8 @@ import { useDispatch } from 'react-redux'
 import { login } from '../../redux/usrSlice'
 import { ApiError } from '../../error/apiError'
 import Footer from '../../components/Footer'
+import Animation from '../../components/Animation'
+import admin from '../../assets/animations/admin.json'
 
 const validationSchema = yup.object({
   email: yup
@@ -151,26 +153,33 @@ const Login = ({ type }) => {
             </div>
           </form>
         </div>
+        {
+          type === 'em' ? <div className={style.login__info} style={{ alignItems: 'center', justifyContent: 'center', display: 'flex', position: 'relative' }}>
+            <div style={{ width: '500px', position: 'absolute' }}>
+              <Animation animationData={admin} />
 
-        <div className={style.login__info}>
-          <h2>Đăng nhập để có quyền truy cập ngay vào hàng ngàn đánh giá và thông tin về lương</h2>
-          <p>
-            <CheckedIcon /> Xem mức lương để giúp bạn thương lượng lời đề nghị hoặc tăng lương
-          </p>
-          <p>
-            <CheckedIcon />
-            Tìm hiểu về phúc lợi, phỏng vấn, văn hóa công ty qua các bài đánh giá
-          </p>
-          <p>
-            <CheckedIcon />
-            Dễ dàng áp dụng chỉ với 1 cú nhấp chuột
-          </p>
-          <p>
-            <CheckedIcon />
-            Quản lý hồ sơ và quyền riêng tư của riêng bạn
-          </p>
-        </div>
+            </div>
+          </div> : <div className={style.login__info}>
+            <h2>Đăng nhập để có quyền truy cập ngay vào hàng ngàn đánh giá và thông tin về lương</h2>
+            <p>
+              <CheckedIcon /> Xem mức lương để giúp bạn thương lượng lời đề nghị hoặc tăng lương
+            </p>
+            <p>
+              <CheckedIcon />
+              Tìm hiểu về phúc lợi, phỏng vấn, văn hóa công ty qua các bài đánh giá
+            </p>
+            <p>
+              <CheckedIcon />
+              Dễ dàng áp dụng chỉ với 1 cú nhấp chuột
+            </p>
+            <p>
+              <CheckedIcon />
+              Quản lý hồ sơ và quyền riêng tư của riêng bạn
+            </p>
+          </div>
+        }
       </div>
+      <div style={{ height: '100px' }}></div>
       <Footer />
     </div>
   )

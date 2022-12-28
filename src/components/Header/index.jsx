@@ -32,6 +32,7 @@ const Header = () => {
   const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
   const { logOut } = UserAuth()
+  const navigate = useNavigate()
   const items = [
     {
       label: (
