@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Button, Dropdown, Space } from 'antd'
 import { ProfileOutlined, SettingOutlined, HeartOutlined, LogoutOutlined } from '@ant-design/icons'
 import { logout } from '../../redux/usrSlice'
+import { UserAuth } from '../../utils/UserProvider'
 
 const ItemHeader = ({ path, title }) => {
   const navigator = useNavigate()
@@ -30,6 +31,7 @@ const ItemHeader = ({ path, title }) => {
 const Header = () => {
   const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
+  const { logOut } = UserAuth()
   const items = [
     {
       label: (
@@ -62,8 +64,16 @@ const Header = () => {
       label: (
         <a
           style={{ textDecoration: 'none' }}
-          onClick={() => {
-            dispatch(logout())
+          onClick={async () => {
+            if (window.confirm('Bạn chắc chắn muốn đăng xuất') === true) {
+              try {
+                await logOut()
+                dispatch(logout())
+                navigate('/')
+              } catch (error) {
+                console.log(error)
+              }
+            }
           }}
         >
           Đăng xuất
@@ -80,12 +90,15 @@ const Header = () => {
           <img src={logo} alt="logo.png" className={style.header__logo} />
         </a>
         <>
-          <ItemHeader path="/" title="Tìm việc" />
-          <ItemHeader path="/review-company" title="Đánh giá công ty" />
-          <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
-          <ItemHeader path="/apply" title="Công việc đã ứng tuyển" />
-          {user?.position == 'Admin' && (
-            <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+          {user?.role === 'EMPLOYEE' ? (
+            <>
+              <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
+              {user?.position == 'Admin' && (
+                <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+              )}
+            </>
+          ) : (
+            <ItemHeader path="/" title="Tìm việc" />
           )}
         </>
       </div>
@@ -109,20 +122,7 @@ const Header = () => {
           </>
         ) : user?.role === 'USER' ? (
           <>
-            <ItemHeader path="/post-job" title="Đăng bài" />
-            <Dropdown
-              menu={{
-                items,
-              }}
-              placement="bottomRight"
-              arrow={{
-                pointAtCenter: true,
-              }}
-            >
-              <div className={clsx(style.header__item)}>
-                <span>{user.name}</span>
-              </div>
-            </Dropdown>
+            <ItemHeader path="/user" title={<span>{user.name}</span>} />
           </>
         ) : (
           <>

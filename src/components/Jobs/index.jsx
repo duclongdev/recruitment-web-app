@@ -12,6 +12,10 @@ import { setJobToShowModal } from '../../redux/jobSlice'
 import { openApplyModal, selectApplyModal } from '../../redux/modalSlice'
 import Animation from '../../components/Animation'
 import noData from '../../assets/animations/noData'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { letterAPI } from '../../api/letter'
+import { selectUser } from '../../redux/usrSlice'
 
 const NoneData = ({ title = 'Bạn đang ở trang cuối', key }) => {
   return (
@@ -32,25 +36,25 @@ const NoneData = ({ title = 'Bạn đang ở trang cuối', key }) => {
     </div>
   )
 }
-
+export const convertTime = (time, start) => {
+  const createdAt = Date.parse(time)
+  const result = Math.abs(new Date() - new Date(createdAt))
+  let seconds = Math.floor(result / 1000)
+  let minutes = Math.floor(seconds / 60)
+  let hours = Math.floor(minutes / 60)
+  if (hours === 0) return `${start} gần đây`
+  let days = Math.floor(hours / 24)
+  if (days === 0) return `${start} ${hours} giờ trước`
+  let weeks = Math.floor(days / 7)
+  if (weeks === 0) return `${start} ${days} ngày trước`
+  let months = Math.floor(weeks / 30)
+  if (months === 0) return `${start} ${weeks} tuần trước`
+  return `${start} ${months} tháng trước`
+}
 const ListJob = ({ jobs, setJobDetail, jobDetail, condition, setJobs }) => {
   const dispatch = useDispatch()
   const loadMore = useSelector(selectLoadMore)
-  const convertTime = (time) => {
-    const createdAt = Date.parse(time)
-    const result = Math.abs(new Date() - new Date(createdAt))
-    let seconds = Math.floor(result / 1000)
-    let minutes = Math.floor(seconds / 60)
-    let hours = Math.floor(minutes / 60)
-    if (hours === 0) return 'Mới đăng gần đây'
-    let days = Math.floor(hours / 24)
-    if (days === 0) return `Đã đăng ${hours} giờ trước`
-    let weeks = Math.floor(days / 7)
-    if (weeks === 0) return `Đã đăng ${days} ngày trước`
-    let months = Math.floor(weeks / 30)
-    if (months === 0) return `Đã đăng ${weeks} tuần trước`
-    return `Đã đăng ${months} tháng trước`
-  }
+
   const handleClick = (job) => {
     setJobDetail(job)
   }
@@ -97,7 +101,7 @@ const ListJob = ({ jobs, setJobDetail, jobDetail, condition, setJobs }) => {
                 </div>
               ) : null}
 
-              <div className={style.posted}>{convertTime(job.createdAt)}</div>
+              <div className={style.posted}>{convertTime(job.createdAt, 'Đã đăng')}</div>
             </div>
           )}
         </>
@@ -123,6 +127,24 @@ const JobDetail = ({ jobDetail }) => {
     dispatch(setJobToShowModal(jobDetail))
     dispatch(openApplyModal())
   }
+  const user = useSelector(selectUser)
+  const saveJob = () => {
+    const userId = user._id
+    const jobId = jobDetail._id
+    letterAPI.saveJob(jobId, userId).then(
+      toast.success('Lưu thành công', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+    )
+  }
+
   return (
     <div className={style.jobDetail}>
       <div className={style.jobDetail__header}>
@@ -135,12 +157,15 @@ const JobDetail = ({ jobDetail }) => {
         <div className={style.jobDetail__header__buttonContainer}>
           <Button title={'Ứng tuyển ngay'} onClick={handleToApply} />
           <button
+            className={style.savedBtn}
             style={{
               marginLeft: '20px',
               borderRadius: '10px',
               border: 'none',
               padding: '10px 20px',
             }}
+            type="button"
+            onClick={saveJob}
           >
             <HeadIcon />
           </button>

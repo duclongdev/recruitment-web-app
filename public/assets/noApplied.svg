@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 126 73" aria-hidden="true"
+    data-testid="ipl-illustration-spot">
+    <defs>
+        <filter id="spot-application-3_svg__a" x="0%" y="0%">
+            <feTurbulence baseFrequency="2.5" numOctaves="4" result="noise" seed="14"></feTurbulence>
+            <feComponentTransfer in="noise" result="opacity">
+                <feFuncA slope="0.6" type="linear"></feFuncA>
+            </feComponentTransfer>
+            <feBlend in="opacity" in2="SourceGraphic" mode="overlay" result="blend"></feBlend>
+        </filter>
+        <filter id="spot-application-3_svg__c" width="47.374" height="54.356" x="79.05" y="4.991"
+            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4373_1922"></feBlend>
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow_4373_1922" result="shape"></feBlend>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="shape" result="effect2_innerShadow_4373_1922"></feBlend>
+        </filter>
+        <filter id="spot-application-3_svg__e" width="56.323" height="50.797" x="70.074" y="4.988"
+            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4373_1922"></feBlend>
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow_4373_1922" result="shape"></feBlend>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="shape" result="effect2_innerShadow_4373_1922"></feBlend>
+        </filter>
+        <filter id="spot-application-3_svg__f" width="8.1" height="12.359" x="76.381" y="43.426"
+            color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4373_1922"></feBlend>
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow_4373_1922" result="shape"></feBlend>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+            <feOffset dx="0.5" dy="0.5"></feOffset>
+            <feGaussianBlur stdDeviation="0.25"></feGaussianBlur>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"></feComposite>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"></feColorMatrix>
+            <feBlend in2="shape" result="effect2_innerShadow_4373_1922"></feBlend>
+        </filter>
+        <linearGradient id="spot-application-3_svg__d" x1="115.635" x2="107.268" y1="5.486"
+            y2="60.408" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E867A8"></stop>
+            <stop offset="1" stop-color="#9D2B6B"></stop>
+        </linearGradient>
+        <clipPath id="spot-application-3_svg__b">
+            <path xmlns="http://www.w3.org/2000/svg" fill="#fff"
+                d="M86.304 72.132l3.81-18.124 4.539 4.34 30.771-53.356-.029-.001.004-.003L98.8 12.692 101.403.313C63.925 1.497 43.568 17.474 32.519 34.058c-5.012-1.993-9.868-3.22-14.217-3.506L.282 72.132h86.022z"></path>
+        </clipPath>
+        <pattern id="spot-application-3_svg__g" width="50" height="40" x="0" y="0"
+            patternTransform="scale(.3)" patternUnits="userSpaceOnUse">
+            <path d="M0 0h50v40H0z" filter="url(#spot-application-3_svg__a)"></path>
+        </pattern>
+    </defs>
+    <g clip-path="url(#spot-application-3_svg__b)">
+        <path fill="#B9DAD0" d="M19.437 72.132S21.77 2.828 101.403.313l-15.099 71.82H19.437z"></path>
+        <path fill="#7BC0AE"
+            d="M74.39 72.132H.283l18.019-41.58c18.542 1.22 46.29 19.525 56.088 41.58z"></path>
+        <path fill="#462615"
+            d="M68.088 70.01l-.018.033c8.54-12.556 8.939-16.802 9.284-20.49.057-.607.113-1.2.203-1.811.016-.095.123-.336.23-.577.107-.24.214-.481.23-.576-.398-.311-1.005-.703-1.522-1.022-.424.624-.799 1.18-1.053 1.558a52.1 52.1 0 01-.34.502c-.004.004-.062.127-.145.302-.142.298-.355.748-.494 1.019l-.02.04c-.507 1.024-1.01 2.039-1.185 3.166-.014.092-.022.361-.034.768-.045 1.46-.143 4.683-.742 7.772-.56 2.9-2.251 6.148-4.394 9.317z"></path>
+        <g filter="url(#spot-application-3_svg__c)">
+            <path fill="url(#spot-application-3_svg__d)"
+                d="M125.424 4.992L94.653 58.348 79.05 43.429l46.374-38.437z"></path>
+        </g>
+        <g filter="url(#spot-application-3_svg__e)">
+            <path fill="#F5CB9D"
+                d="M70.074 36.314h.001L125.396 4.99l-.134.137L79.05 43.429l4.383 4.19-7.053 7.166-6.306-18.47z"></path>
+        </g>
+        <path fill="#89471E"
+            d="M68.448 45.385s1.954-3.846 2.751-5.776l.53 1.55-.64.852-2.64 3.374zm-.378 24.658l.018-.032c2.142-3.169 3.834-6.417 4.394-9.316.599-3.09.697-6.313.742-7.773.012-.406.02-.676.034-.767.173-1.11.662-2.11 1.16-3.117l1.962 5.747.005-.005c-1.015 3.223-3.21 7.759-8.315 15.263z"></path>
+        <path fill="#462615"
+            d="M73.907 47.54c-.416.847-.784 1.7-.921 2.642-.055.372-.197.89-.35 1.451-.284 1.038-.61 2.228-.508 2.928.377 2.566.094 8.275-4.058 15.482 5.105-7.504 7.3-12.04 8.315-15.263l-.005.005-2.473-7.244z"></path>
+        <path fill="#89471E"
+            d="M73.907 47.54c-.416.847-.784 1.7-.921 2.642-.055.372-.197.89-.35 1.451-.284 1.038-.61 2.228-.508 2.928.377 2.566.094 8.275-4.058 15.482 5.105-7.504 7.3-12.04 8.315-15.263l-.005.005-2.473-7.244z"></path>
+        <g filter="url(#spot-application-3_svg__f)">
+            <path fill="#74234E" d="M79.076 43.455l-.051-.03-2.644 11.36 7.1-7.118-4.404-4.212z"></path>
+        </g>
+        <path fill="#fff" d="M53.311 25.866l16.764 10.449L125.4 4.988 53.311 25.866z"></path>
+        <path fill="#B4602B"
+            d="M64.333 32.735l5.743 3.58.034-.02 1.092 3.31c-.797 1.927-2.754 5.78-2.754 5.78l2.64-3.374c.171-.225 1.726-2.303 2.526-3.373.314-.419.686-.787 1.072-1.14.454-.416.872-.87 1.254-1.355 1.038-1.33 2.725-3.468 2.725-3.468a1.424 1.424 0 012.394-.01c.005.007.01.015.016.02 0 .005.002.008.005.01a4.774 4.774 0 01.33 4.768 43.55 43.55 0 00-.44.954l-.036.078c-.453 1-.977 2.157-1.662 3.076-.87 1.164-2.999 4.32-3.83 5.554l-.34.503a10.05 10.05 0 00-.145.301c-.142.298-.355.748-.494 1.019l-.02.04c-.507 1.024-1.01 2.04-1.185 3.166-.014.092-.022.361-.034.768-.045 1.46-.143 4.683-.742 7.773-.68 3.52-3.028 7.555-5.826 11.337H42.703l14.282-9.944a7.808 7.808 0 002.075-4.82l.65-15.267.062-.734c.298-3.776 2.464-6.426 4.56-8.532z"></path>
+        <path fill="#89471E"
+            d="M80.204 34.895s.096-1.706-1.543-2.253l-2.136 2.695s.994.295 1.882 3.074l1.797-3.516z"></path>
+    </g>
+    <rect clip-path="url(#spot-application-3_svg__b)" width="100%" height="100%"
+        fill="url(#spot-application-3_svg__g)" style="mix-blend-mode: overlay;"></rect>
+</svg>
