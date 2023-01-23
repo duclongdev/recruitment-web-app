@@ -93,8 +93,11 @@ const Header = () => {
           {user?.role === 'EMPLOYEE' ? (
             <>
               <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
-              {user?.position == 'Admin' && (
-                <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+              {user?.position == 'Manager' && (
+                <>
+                  <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+                  <ItemHeader path="/admin" title="Admin" />
+                </>
               )}
             </>
           ) : (

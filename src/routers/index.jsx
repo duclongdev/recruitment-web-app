@@ -13,6 +13,7 @@ import Signup from '../pages/signup'
 import ManagePost from '../pages/managePost/managePost'
 import Apply from '../pages/apply/apply'
 import ManagePostAdmin from '../pages/managePostAdmin/managePostAdmin'
+import AdminPage from '../pages/admin/admin'
 
 const publicRoutes = [
   { path: '/', component: Home },
@@ -31,5 +32,6 @@ const publicRoutes = [
   { path: '/manage-post', component: ManagePost },
   { path: '/apply', component: Apply },
   { path: '/manage-post-admin', component: ManagePostAdmin },
+  { path: '/admin', component: AdminPage, layout: null },
 ]
 export { publicRoutes }
