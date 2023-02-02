@@ -1,6 +1,11 @@
 import { Fragment } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom'
 import { DefaultLayout } from './layouts'
+import AdminPage from './pages/admin/admin'
+import DashboardAdminPage from './pages/admin/dashboard/dashboard_admin_page'
+import EmployeeAdminPage from './pages/admin/employee/employee_admin_page'
+import JobsAdminPage from './pages/admin/jobs/jobs_admin_page'
+import UserAdminPage from './pages/admin/user/user_admin_page'
 import { publicRoutes } from './routers'
 
 const App = () => {
@@ -26,6 +31,13 @@ const App = () => {
             />
           )
         })}
+        <Route element={<AdminPage />}>
+          <Route path="/admin/*/" element={<DashboardAdminPage />} />
+          <Route exact path="/admin/*/dashboard" element={<DashboardAdminPage />} />
+          <Route exact path="/admin/*/jobs" element={<JobsAdminPage />} />
+          <Route exact path="/admin/*/employee" element={<EmployeeAdminPage />} />
+          <Route exact path="/admin/*/user" element={<UserAdminPage />} />
+        </Route>
       </Routes>
     </Router>
   )

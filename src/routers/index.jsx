@@ -1,19 +1,21 @@
+import AdminPage from '../pages/admin/admin'
+import DashboardAdminPage from '../pages/admin/dashboard/dashboard_admin_page'
+import JobsAdminPage from '../pages/admin/jobs/jobs_admin_page'
+import Apply from '../pages/apply/apply'
+import CreateCV from '../pages/createCV'
 import Detail from '../pages/detail'
+import Employee from '../pages/employee'
 import Favorite from '../pages/favorite'
 import Home from '../pages/home'
 import Login from '../pages/login'
-import Search from '../pages/search'
-import User from '../pages/user'
-import ReviewCompany from '../pages/reviewCompany'
 import LoginForEmployee from '../pages/loginForEmployee'
-import CreateCV from '../pages/createCV'
-import Employee from '../pages/employee'
-import PostJob from '../pages/postJob'
-import Signup from '../pages/signup'
 import ManagePost from '../pages/managePost/managePost'
-import Apply from '../pages/apply/apply'
 import ManagePostAdmin from '../pages/managePostAdmin/managePostAdmin'
-import AdminPage from '../pages/admin/admin'
+import PostJob from '../pages/postJob'
+import ReviewCompany from '../pages/reviewCompany'
+import Search from '../pages/search'
+import Signup from '../pages/signup'
+import User from '../pages/user'
 
 const publicRoutes = [
   { path: '/', component: Home },
@@ -32,6 +34,5 @@ const publicRoutes = [
   { path: '/manage-post', component: ManagePost },
   { path: '/apply', component: Apply },
   { path: '/manage-post-admin', component: ManagePostAdmin },
-  { path: '/admin', component: AdminPage, layout: null },
 ]
 export { publicRoutes }

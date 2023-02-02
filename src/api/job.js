@@ -61,6 +61,15 @@ const deleteJobById = (id) => {
   return id
 }
 
+const updateJob = (id, job) => {
+  return new Promise((resolve, reject) => {
+    base
+      .put(`/job/${id}`, { ...job })
+      .then((res) => resolve(res))
+      .catch((error) => reject(error))
+  })
+}
+
 export const JobAPI = {
   postJob: postJob,
   getJobs: getJobs,
@@ -68,4 +77,5 @@ export const JobAPI = {
   loadMoreJob: loadMoreJob,
   getAllJobs,
   deleteJobById,
+  updateJob,
 }

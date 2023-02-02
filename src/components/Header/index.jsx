@@ -96,7 +96,7 @@ const Header = () => {
               {user?.position == 'Manager' && (
                 <>
                   <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
-                  <ItemHeader path="/admin" title="Admin" />
+                  <ItemHeader path="/admin/*" title="Admin" />
                 </>
               )}
             </>
