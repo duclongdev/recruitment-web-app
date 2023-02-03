@@ -46,7 +46,7 @@ const AdminPage = () => {
             </li>
             <li id="li">
               <Link to={'/admin/*/employee'}>
-                <i class="bx bxs-user"></i>
+                <i class="bx bxs-user-badge"></i>
                 <span className="links_name" id="span">
                   Nhân viên
                 </span>
