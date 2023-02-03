@@ -110,7 +110,7 @@ const DashboardAdminPage = () => {
           <h2>Tổng số tài khoản: </h2>
           <AnimatedNumbers
             includeComma
-            animateToNumber={10000}
+            animateToNumber={100}
             fontStyle={{ fontSize: 40 }}
             configs={[
               { mass: 1, tension: 30, friction: 10 },
