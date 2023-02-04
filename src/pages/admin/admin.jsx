@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate, useRoutes, Router, Routes, Route, Outlet } from 'react-router-dom'
+import { EmployeeAPI } from '../../api/employee'
+import { userAPI } from '../../api/user'
+import { getListEmployee } from '../../redux/employeeSlice'
+import { getListUser } from '../../redux/usrSlice'
 import './admin.css'
 
 const AdminPage = () => {
   const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    EmployeeAPI.getAllEmployee().then((res) => {
+      dispatch(getListEmployee(res.data))
+    })
+
+    userAPI.getAllUser().then((res) => {
+      dispatch(getListUser(res.data))
+    })
+  }, [dispatch])
 
   return (
     <div className="body">

@@ -2,11 +2,14 @@ import { Card } from 'antd'
 import React from 'react'
 import ReactApexChart from 'react-apexcharts'
 import AnimatedNumbers from 'react-animated-numbers'
+import { useSelector } from 'react-redux'
 
 const DashboardAdminPage = () => {
-  const series = [12, 14]
+  const employee = useSelector((state) => state.employee.list)
+  const user = useSelector((state) => state.user.list)
+  const series = [employee.length, user.length]
   const options = {
-    labels: ['user', 'employee'],
+    labels: ['người dùng', 'nhân viên'],
     chart: {
       width: 380,
       type: 'donut',
@@ -110,7 +113,7 @@ const DashboardAdminPage = () => {
           <h2>Tổng số tài khoản: </h2>
           <AnimatedNumbers
             includeComma
-            animateToNumber={100}
+            animateToNumber={employee.length + user.length}
             fontStyle={{ fontSize: 40 }}
             configs={[
               { mass: 1, tension: 30, friction: 10 },

@@ -1,24 +1,14 @@
-import { Avatar, List, Tag, Card, Typography, Button } from 'antd'
-import React, { useEffect, useState } from 'react'
-import { userAPI } from '../../../api/user'
-import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
+import { EyeOutlined } from '@ant-design/icons'
+import { Avatar, Button, Card, List, Tag } from 'antd'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { ModalCustom } from '../components/modal/modal'
 
 const UserAdminPage = () => {
-  const [initLoading, setInitLoading] = useState(true)
-  const [data, setData] = useState([])
   const [show, setShow] = useState(false)
   const [item, setItem] = useState([])
-  useEffect(() => {
-    userAPI.getAllUser().then((res) => {
-      setData(res.data)
-      setInitLoading(false)
-      console.log(res.data)
-    })
-  }, [setData])
-
+  const user = useSelector((state) => state.user)
   const handleShow = (item) => {
-    console.log(item)
     setShow(true)
     setItem(item)
   }
@@ -29,9 +19,9 @@ const UserAdminPage = () => {
       <Card>
         <List
           className="demo-loadmore-list"
-          loading={initLoading}
+          loading={user.loading}
           itemLayout="horizontal"
-          dataSource={data}
+          dataSource={user.list}
           pagination={{
             pageSize: 5,
           }}

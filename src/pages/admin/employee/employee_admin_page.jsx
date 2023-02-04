@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { EmployeeAPI } from '../../../api/employee'
-import { Avatar, List, Tag, Card, Typography, Button } from 'antd'
 import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
+import { Button, Card, List, Tag } from 'antd'
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { ModalCustom } from '../components/modal/modal'
 
 const EmployeeAdminPage = () => {
-  const [initLoading, setInitLoading] = useState(true)
-  const [data, setData] = useState([])
   const [show, setShow] = useState(false)
   const [item, setItem] = useState([])
-  useEffect(() => {
-    EmployeeAPI.getAllEmployee().then((res) => {
-      setData(res.data)
-      setInitLoading(false)
-      console.log(res.data)
-    })
-  }, [setData])
+  const employee = useSelector((state) => state.employee)
 
   const handleShow = (item) => {
     setShow(true)
@@ -27,9 +19,9 @@ const EmployeeAdminPage = () => {
       <Card>
         <List
           className="demo-loadmore-list"
-          loading={initLoading}
+          loading={employee.loading}
           itemLayout="horizontal"
-          dataSource={data}
+          dataSource={employee.list}
           pagination={{
             pageSize: 4,
           }}
