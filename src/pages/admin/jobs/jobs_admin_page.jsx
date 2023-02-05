@@ -56,7 +56,6 @@ const JobsAdminPage = () => {
   useEffect(() => {
     JobAPI.getAllJobs().then((res) => {
       setData(res.data)
-      console.log(res.data)
     })
   }, [setData])
   const [searchText, setSearchText] = useState('')
@@ -167,7 +166,6 @@ const JobsAdminPage = () => {
   })
 
   const handleDelete = (id) => {
-    console.log(id)
     const newData = data.filter((item) => item._id !== id)
     JobAPI.deleteJobById(id)
     setData(newData)

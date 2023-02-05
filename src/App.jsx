@@ -5,10 +5,13 @@ import AdminPage from './pages/admin/admin'
 import DashboardAdminPage from './pages/admin/dashboard/dashboard_admin_page'
 import EmployeeAdminPage from './pages/admin/employee/employee_admin_page'
 import JobsAdminPage from './pages/admin/jobs/jobs_admin_page'
+import { NotFound } from './pages/admin/not_found/NotFound'
 import UserAdminPage from './pages/admin/user/user_admin_page'
+import Home from './pages/home'
 import { publicRoutes } from './routers'
 
 const App = () => {
+  const authorization = localStorage.getItem('role')
   return (
     <Router>
       <Routes>
@@ -31,7 +34,7 @@ const App = () => {
             />
           )
         })}
-        <Route element={<AdminPage />}>
+        <Route element={authorization === '"EMPLOYEE"' ? <AdminPage /> : <NotFound />}>
           <Route path="/admin/*/" element={<DashboardAdminPage />} />
           <Route exact path="/admin/*/dashboard" element={<DashboardAdminPage />} />
           <Route exact path="/admin/*/jobs" element={<JobsAdminPage />} />

@@ -1,12 +1,22 @@
 import { Card } from 'antd'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactApexChart from 'react-apexcharts'
 import AnimatedNumbers from 'react-animated-numbers'
 import { useSelector } from 'react-redux'
+import { JobAPI } from '../../../api/job'
 
 const DashboardAdminPage = () => {
   const employee = useSelector((state) => state.employee.list)
   const user = useSelector((state) => state.user.list)
+
+  const [data, setData] = useState([])
+  useEffect(() => {
+    JobAPI.getAllJobs().then((res) => {
+      setData(res.data)
+      console.log(res.data)
+    })
+  }, [setData])
+
   const series = [employee.length, user.length]
   const options = {
     labels: ['người dùng', 'nhân viên'],
@@ -97,18 +107,44 @@ const DashboardAdminPage = () => {
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-between',
+
           flexWrap: 'wrap',
           gap: '10px',
-          height: '560px',
-          overflowY: 'scroll',
+          height: '300px',
+          overflow: 'auto',
         }}
       >
         <Card style={{ width: '49%', display: 'flex', justifyContent: 'center' }}>
           <ReactApexChart options={options} series={series} type="donut" width={400} />
         </Card>
         <Card
-          style={{ width: '49%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          style={{
+            width: '24%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <h2>Tổng số công việc: </h2>
+          <AnimatedNumbers
+            includeComma
+            animateToNumber={data.length}
+            fontStyle={{ fontSize: 40 }}
+            configs={[
+              { mass: 1, tension: 140, friction: 126 },
+              { mass: 1, tension: 130, friction: 114 },
+              { mass: 1, tension: 150, friction: 112 },
+              { mass: 1, tension: 130, friction: 120 },
+            ]}
+          ></AnimatedNumbers>
+        </Card>
+        <Card
+          style={{
+            width: '24%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
           <h2>Tổng số tài khoản: </h2>
           <AnimatedNumbers
@@ -121,15 +157,6 @@ const DashboardAdminPage = () => {
               { mass: 3, tension: 30, friction: 10 },
             ]}
           ></AnimatedNumbers>
-        </Card>
-        <Card style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <ReactApexChart
-            options={options2}
-            series={series2}
-            type="bar"
-            height={350}
-            width={1000}
-          />
         </Card>
       </div>
     </div>

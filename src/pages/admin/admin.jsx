@@ -22,7 +22,7 @@ const AdminPage = () => {
   }, [dispatch])
 
   return (
-    <div className="body">
+    <div className="body" style={{ backgroundColor: 'rgb(240, 242, 245)' }}>
       <div>
         <div className="sidebar" id="sidebar">
           <div className="logo_content">

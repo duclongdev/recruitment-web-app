@@ -2,6 +2,7 @@ import { DeleteOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons'
 import { Button, Card, List, Tag } from 'antd'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { letterAPI } from '../../../api/letter'
 import { ModalCustom } from '../components/modal/modal'
 
 const EmployeeAdminPage = () => {

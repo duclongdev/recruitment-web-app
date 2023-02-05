@@ -12,6 +12,7 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, action) => {
       localStorage.setItem('employee', JSON.stringify(action.payload))
+      localStorage.setItem('role', JSON.stringify(action.payload.role))
       state.value = action.payload
     },
     logout: (state) => {
