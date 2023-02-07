@@ -1,8 +1,6 @@
-import AdminPage from '../pages/admin/admin'
-import DashboardAdminPage from '../pages/admin/dashboard/dashboard_admin_page'
-import JobsAdminPage from '../pages/admin/jobs/jobs_admin_page'
 import Apply from '../pages/apply/apply'
 import CreateCV from '../pages/createCV'
+
 import Detail from '../pages/detail'
 import Employee from '../pages/employee'
 import Favorite from '../pages/favorite'

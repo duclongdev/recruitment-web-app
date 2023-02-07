@@ -5,6 +5,7 @@ import modalSlice from './modalSlice'
 import employeeReducer from './employeeSlice'
 import homeSlice from './homeSlice'
 import jobSlice from './jobSlice'
+import CVSlice from './CVSlice'
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     employee: employeeReducer,
     home: homeSlice,
     job: jobSlice,
+    cv: CVSlice,
   },
 })
