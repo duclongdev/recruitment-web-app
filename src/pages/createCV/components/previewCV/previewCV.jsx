@@ -1,13 +1,21 @@
 import { Avatar, Col, Divider, Drawer, List, Row } from 'antd'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { AimOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons'
 import './previewCV.scss'
-const DescriptionItem = ({ title, content }) => (
+const DescriptionItem = ({ title, content, reactNode }) => (
   <div className="site-description-item-profile-wrapper">
-    <p className="site-description-item-profile-p-label">{title}:</p>
-    {content}
+    {!reactNode ? (
+      <span className="site-description-item-profile-p-label">{title}: </span>
+    ) : (
+      <span style={{ fontSize: 20 }}>{reactNode} : </span>
+    )}
+
+    <span style={{ fontSize: `${reactNode ? '18px' : '16px'}` }}>{content}</span>
   </div>
 )
 const PreviewCV = ({ data }) => {
+  const dataCV = useSelector((state) => state.cv)
   const [open, setOpen] = useState(false)
   const showDrawer = () => {
     setOpen(true)
@@ -19,7 +27,12 @@ const PreviewCV = ({ data }) => {
   return (
     <>
       <List
-        dataSource={data}
+        dataSource={[
+          {
+            id: 1,
+            name: 'l',
+          },
+        ]}
         renderItem={(item) => (
           <List.Item
             key={item.id}
@@ -34,7 +47,7 @@ const PreviewCV = ({ data }) => {
                 <Avatar src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
               }
               title={<a href="https://ant.design/index-cn">{item.name}</a>}
-              description="Progresser XTech"
+              description="CV của bạn"
             />
           </List.Item>
         )}
@@ -46,89 +59,121 @@ const PreviewCV = ({ data }) => {
             marginBottom: 24,
           }}
         >
-          User Profile
+          Curriculum Vitae
         </p>
-        <p className="site-description-item-profile-p">Personal</p>
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title="Full Name" content="Lily" />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title="Account" content="AntDesign@example.com" />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title="City" content="HangZhou" />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title="Country" content="China🇨🇳" />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title="Birthday" content="February 2,1900" />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title="Website" content="-" />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <DescriptionItem
-              title="Message"
-              content="Make things as simple as possible but no simpler."
-            />
-          </Col>
-        </Row>
+        <div
+          className="site-description-item-profile-p"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: 'blueviolet',
+            padding: 20,
+            borderRadius: 10,
+            marginBottom: 20,
+          }}
+        >
+          <span style={{ marginBottom: 20, fontSize: '30px', color: 'white' }}>
+            {dataCV.info.username}
+          </span>
+          <span style={{ fontSize: 20, fontWeight: 'bold', color: 'orange' }}>
+            {dataCV.info.position}
+          </span>
+        </div>
         <Divider />
-        <p className="site-description-item-profile-p">Company</p>
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title="Position" content="Programmer" />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title="Responsibilities" content="Coding" />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title="Department" content="XTech" />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title="Supervisor" content={<a>Lin</a>} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <DescriptionItem
-              title="Skills"
-              content="C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
+        <p style={{ fontSize: 24, fontWeight: 'bold' }} className="site-description-item-profile-p">
+          Thông tin cá nhân
+        </p>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
+            <Row>
+              <Col>
+                <DescriptionItem
+                  title="Số điện thoại"
+                  content={dataCV.personalInformation.phoneNumber}
+                  reactNode={<PhoneOutlined />}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <DescriptionItem
+                  title="Email"
+                  content={dataCV.personalInformation.email}
+                  reactNode={<MailOutlined />}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <DescriptionItem
+                  title="address"
+                  content={dataCV.personalInformation.address}
+                  reactNode={<AimOutlined />}
+                />
+              </Col>
+            </Row>
+          </div>
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+            <img
+              src="https://th.bing.com/th/id/OIP.W8apTKARTqVhmLzMCisNmAHaEs?pid=ImgDet&rs=1"
+              alt=""
+              width={200}
+              height={200}
             />
-          </Col>
-        </Row>
+          </div>
+        </div>
+
         <Divider />
-        <p className="site-description-item-profile-p">Contacts</p>
-        <Row>
-          <Col span={12}>
-            <DescriptionItem title="Email" content="AntDesign@example.com" />
-          </Col>
-          <Col span={12}>
-            <DescriptionItem title="Phone Number" content="+86 181 0000 0000" />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={24}>
-            <DescriptionItem
-              title="Github"
-              content={
-                <a href="http://github.com/ant-design/ant-design/">
-                  github.com/ant-design/ant-design/
-                </a>
-              }
-            />
-          </Col>
-        </Row>
+        <p style={{ fontSize: 24, fontWeight: 'bold' }} className="site-description-item-profile-p">
+          Học vấn
+        </p>
+        {dataCV.education &&
+          dataCV.education?.educations?.map((item, index) => (
+            <Row key={index}>
+              <Col span={24}>
+                <DescriptionItem title="Trình độ học vấn" content={item} />
+              </Col>
+            </Row>
+          ))}
+
+        <Divider />
+        <p style={{ fontSize: 24, fontWeight: 'bold' }} className="site-description-item-profile-p">
+          Kinh nghiệm làm việc
+        </p>
+        {dataCV.exp &&
+          dataCV.exp?.experience?.map((item, index) => (
+            <div key={index} style={{ marginBottom: 10 }}>
+              <Row>
+                <Col span={24}>
+                  <DescriptionItem title="Công ty" content={item.company} />
+                </Col>
+              </Row>
+              {item.year ? (
+                <Row>
+                  <Col span={24}>
+                    <DescriptionItem title="Từ năm" content={item.year} />
+                  </Col>
+                </Row>
+              ) : null}
+              <Row>
+                <Col span={24}>
+                  <DescriptionItem title="Mô tả" content={item.description} />
+                </Col>
+              </Row>
+            </div>
+          ))}
+        <Divider />
+        <p style={{ fontSize: 24, fontWeight: 'bold' }} className="site-description-item-profile-p">
+          Kĩ năng / sở thích
+        </p>
+        {dataCV.skills &&
+          dataCV.skills?.skills?.map((item, index) => (
+            <Row key={index}>
+              <Col span={24}>
+                <DescriptionItem title="Kĩ năng" content={item?.skill} />
+              </Col>
+            </Row>
+          ))}
       </Drawer>
     </>
   )

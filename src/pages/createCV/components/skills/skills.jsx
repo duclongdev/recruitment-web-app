@@ -52,8 +52,6 @@ const Skills = forwardRef(({ data }, ref) => {
     )
   }
 
-  console.log(form)
-
   useEffect(() => {
     const val = form.getFieldsValue('')
     dispatch(
@@ -70,7 +68,7 @@ const Skills = forwardRef(({ data }, ref) => {
       <Form
         name="dynamic_form_item_skills"
         form={form}
-        {...formItemLayoutWithOutLabel}
+        {...formItemLayoutWithOutLabel1}
         style={{
           maxWidth: 800,
         }}

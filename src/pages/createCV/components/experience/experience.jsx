@@ -11,7 +11,6 @@ const Experience = forwardRef(({ data }, ref) => {
   const dispatch = useDispatch()
 
   const onFinish = (values) => {
-    console.log(values.educations)
     dispatch(
       setCVDataExp({
         ...values,
@@ -21,7 +20,6 @@ const Experience = forwardRef(({ data }, ref) => {
   }
 
   useEffect(() => {
-    console.log(exp)
     dispatch(
       setCVDataExp({
         ...exp,

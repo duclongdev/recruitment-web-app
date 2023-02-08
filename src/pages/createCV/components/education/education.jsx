@@ -40,7 +40,6 @@ const Education = forwardRef(({ data }, ref) => {
   const educations = Form.useWatch('educations', form)
   const dispatch = useDispatch()
   const onFinish = (values) => {
-    console.log(values.educations)
     dispatch(
       setCVDataEducation({
         ...values,
@@ -48,8 +47,6 @@ const Education = forwardRef(({ data }, ref) => {
       })
     )
   }
-
-  console.log(form)
 
   useEffect(() => {
     const val = form.getFieldsValue('')
@@ -59,8 +56,6 @@ const Education = forwardRef(({ data }, ref) => {
         isValidate: val.educations ? true : false,
       })
     )
-
-    console.log(educations)
   }, [educations])
   return (
     <div>
