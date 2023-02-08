@@ -93,8 +93,11 @@ const Header = () => {
           {user?.role === 'EMPLOYEE' ? (
             <>
               <ItemHeader path="/manage-post" title="Quản lý bài đăng" />
-              {user?.position == 'Admin' && (
-                <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+              {user?.position == 'Manager' && (
+                <>
+                  <ItemHeader path="/manage-post-admin" title="Tất cả bài đăng" />
+                  <ItemHeader path="/admin/*" title="Admin" />
+                </>
               )}
             </>
           ) : (
@@ -105,6 +108,7 @@ const Header = () => {
       <div className={style.header__right}>
         {user?.role === 'EMPLOYEE' ? (
           <>
+            <ItemHeader path="/create-cv" title="Tạo CV" />
             <ItemHeader path="/post-job" title="Đăng bài" />
             <Dropdown
               menu={{
@@ -122,6 +126,7 @@ const Header = () => {
           </>
         ) : user?.role === 'USER' ? (
           <>
+            <ItemHeader path="/create-cv" title="Tạo CV" />
             <ItemHeader path="/user" title={<span>{user.name}</span>} />
           </>
         ) : (

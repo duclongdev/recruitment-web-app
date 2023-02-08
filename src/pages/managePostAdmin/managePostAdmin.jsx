@@ -27,16 +27,10 @@ const ManagePostAdmin = () => {
           dataSource={list}
           pagination={{ pageSize: 8 }}
           renderItem={(item) => (
-            <List.Item
-              actions={[
-                <a key="list-loadmore-edit">edit</a>,
-                <a key="list-loadmore-more">more</a>,
-                <a key="list-loadmore-delete">delete</a>,
-              ]}
-            >
+            <List.Item>
               <Skeleton avatar title={false} loading={item.loading} active>
                 <List.Item.Meta
-                  title={<a href="https://ant.design">{item.jobName}</a>}
+                  title={<span>{item.jobName}</span>}
                   description={item.companyName}
                 />
                 <div>{item.location}</div>

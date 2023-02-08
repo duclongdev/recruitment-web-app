@@ -29,8 +29,19 @@ const updateProfile = (id, user) => {
       .catch((error) => reject(error))
   })
 }
+
+const getAllEmployee = () => {
+  return new Promise((resolve, reject) => {
+    base
+      .get('/employee/all')
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+}
+
 export const EmployeeAPI = {
   signIn: signIn,
   login: login,
   updateProfile,
+  getAllEmployee
 }

@@ -8,6 +8,8 @@ const initialState = {
     phoneNumber: '',
     companyName: '',
   },
+  list: [],
+  loading: true,
 }
 
 export const employeeSlice = createSlice({
@@ -16,12 +18,15 @@ export const employeeSlice = createSlice({
   reducers: {
     getEmployeeProfile: (state, actions) => {
       state.value = actions.payload
-      console.log(state.value)
+    },
+    getListEmployee: (state, actions) => {
+      state.list = actions.payload
+      state.loading = false
     },
   },
 })
 
-export const { getEmployeeProfile } = employeeSlice.actions
+export const { getEmployeeProfile, getListEmployee } = employeeSlice.actions
 export const selectEmployee = (state) => state.employee.value
 
 export default employeeSlice.reducer

@@ -43,9 +43,19 @@ const update = (data) => {
   })
 }
 
+const getAllUser = () => {
+  return new Promise((resolve, reject) => {
+    base
+      .get('/user/all')
+      .then((response) => resolve(response))
+      .catch((error) => reject(error))
+  })
+}
+
 export const userAPI = {
   login: login,
   signin: signin,
   applyJob: applyJob,
   update: update,
+  getAllUser,
 }
